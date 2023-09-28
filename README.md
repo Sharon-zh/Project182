@@ -12,7 +12,7 @@
    https://www.themealdb.com/api.php
 
 4. A screenshot of using a tool to try out the API:
-   ![image](https://github.com/Sharon-zh/Project182/blob/main/screenshoot.png?raw=true)
+   ![image](https://github.com/Sharon-zh/Project182/blob/main/screenshot.png?raw=true)
 
 5. The example output of running your Java code:
    
