@@ -10,4 +10,4 @@
 3. The link to the documentation for an API that our team can use related to the domain is as follows:
    https://www.themealdb.com/api.php
 4. A screenshot of using a tool to try out the API:
-   ![Aaron Swartz]()
+   ![image](https://github.com/Sharon-zh/Project182/blob/main/screenshoot.png?raw=true)
