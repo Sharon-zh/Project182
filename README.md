@@ -4,6 +4,7 @@
    - store recipes (ingredients, instructions, etc.) 
    - organize recipes in some meaningful way 
    - user customization
+   
 (ii) For HR System, the applications our team is thinking of developing are as follows:
    - types of employees 
    - requests for leave 
