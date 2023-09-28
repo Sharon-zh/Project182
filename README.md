@@ -1,7 +1,6 @@
 # Project182
 1. The problem domain our team is tentatively wanting to focus on Recipe Organizer.
-2.
-(i) For Recipe Organizer, the applications our team is thinking of developing are as follows:
+2.For Recipe Organizer, the applications our team is thinking of developing are as follows:
    - store recipes (ingredients, instructions, etc.) 
    - organize recipes in some meaningful way 
    - user customization
