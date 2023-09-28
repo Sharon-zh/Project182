@@ -12,5 +12,5 @@
 4. A screenshot of using a tool to try out the API:
    ![image](https://github.com/Sharon-zh/Project182/blob/main/screenshoot.png?raw=true)
 5. The example output of running your Java code:
-6. The list of any technical problems blocking progress:
-   - 
+6. The list of the technical problems blocking progress:
+   -
