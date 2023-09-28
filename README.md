@@ -25,4 +25,6 @@ Process finished with exit code 0
 
 
 7. The list of the technical problems blocking progress:
+- We  don’t understand how to use the full HTTP Methods.
+- We don’t understand the meaning for API Java code line by line.
 
