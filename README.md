@@ -6,15 +6,17 @@
    - organize recipes in some meaningful way, such as alphabetically or by the most viewed recipe...
    - user customization: show a list of the user's favorite recipes or most used recipes, (recommend recipes a user may like by the user's searches if possible).
    - write comments  and likes for recipes: collect the number of likes and all comments other users made for a recipe.
-   - search for the recipe by name or by ingredient: show all recipes with the specific searching word or ingredient.
+   - search for the recipe by ingredient, calories, diet or allergies: show all recipes with the specific searching word or ingredient.
 
 3. The link to the documentation for an API that our team can use related to the domain is as follows:
-   https://www.themealdb.com/api.php
+- Recipe database
+   The MealDB: https://www.themealdb.com/api.php
+   Edamam: https://www.edamam.com/results/recipes/?search=salad
 
-4. A screenshot of using a tool to try out the API:
+5. A screenshot of using a tool to try out the API:
    ![image](https://github.com/Sharon-zh/Project182/blob/main/screenshot.png?raw=true)
 
-5. The example output of running your Java code:
+6. The example output of running your Java code:
    
 Response{protocol=h2, code=200, message=, url=https://www.themealdb.com/api/json/v1/1/search.php?lat=%7Blat%7D&s=Arrabiata}
 ```
@@ -32,8 +34,7 @@ Process finished with exit code 0
 - Sign up
 - Log in
 - Log out
-- Search by name
-- Search by ingredient
+- Search by ingredient, calories, diet or allergies
 - Upload Recipe (words, photos and videos)
 - ?Edit Recipe (words, photos and videos)
 - Store Recipe
@@ -41,5 +42,5 @@ Process finished with exit code 0
 - Give likes
 - Organize recipes alphabetically
 - Organize recipes by the most viewed recipe
-- Recommend (by searching history and favorite recipes)
+- Recommend (by searching history, favorite recipes or top ten recipes)
 
