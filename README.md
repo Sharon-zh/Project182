@@ -6,7 +6,7 @@
    - organize recipes in some meaningful way, such as alphabetically or by the most viewed recipe...
    - user customization: show a list of the user's favorite recipes or most used recipes, (recommend recipes a user may like by the user's searches if possible).
    - write comments  and likes for recipes: collect the number of likes and all comments other users made for a recipe.
-   - search for the recipe by ingredient, calories, diet or allergies: show all recipes with the specific searching word or ingredient.
+   - api.search for the recipe by ingredient, calories, diet or allergies: show all recipes with the specific searching word or ingredient.
 
 3. The link to the documentation for an API that our team can use related to the domain is as follows:
 - Recipe database:
