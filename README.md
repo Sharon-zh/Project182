@@ -9,9 +9,9 @@
    - search for the recipe by ingredient, calories, diet or allergies: show all recipes with the specific searching word or ingredient.
 
 3. The link to the documentation for an API that our team can use related to the domain is as follows:
-- Recipe database
-   - The MealDB: https://www.themealdb.com/api.php
-   - Edamam: https://www.edamam.com/results/recipes/?search=salad
+- Recipe database:
+   - The MealDB: https://www.themealdb.com/api.php.
+   - Edamam: https://www.edamam.com/results/recipes/?search=salad.
 
 5. A screenshot of using a tool to try out the API:
    ![image](https://github.com/Sharon-zh/Project182/blob/main/screenshot.png?raw=true)
