@@ -28,3 +28,18 @@ Process finished with exit code 0
 - We  don’t understand how to use the full HTTP Methods.
 - We don’t understand the meaning for API Java code line by line.
 
+8. Use case:
+- Sign up
+- Log in
+- Log out
+- Search by name
+- Search by ingredient
+- Upload Recipe (words, photos and videos)
+- ?Edit Recipe (words, photos and videos)
+- Store Recipe
+- Write comments
+- Give likes
+- Organize recipes alphabetically
+- Organize recipes by the most viewed recipe
+- Recommend (by searching history and favorite recipes)
+
