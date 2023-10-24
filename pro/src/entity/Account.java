@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-public interface account_interface {
+public interface Account {
     String getUsername();
 
     String getPassword();

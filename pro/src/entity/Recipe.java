@@ -3,44 +3,14 @@ package entity;
 import java.util.List;
 import java.util.Map;
 
-public class Recipe implements RecipeInterface{
+public interface Recipe {
+    String getName();
 
-    private final String name;
-    private final String instructions;
-    private final List<String> ingredients;
-    private final int likes;
-    private final Map<Account, String> comments;
+    String getInstructions();
 
-    public Recipe(String name, String instructions, List<String> ingredients, int likes, Map<Account, String> comments) {
-        this.name = name;
-        this.instructions = instructions;
-        this.ingredients = ingredients;
-        this.likes = likes;
-        this.comments = comments;
-    }
+    List<String> getIngredients();
 
-    @Override
-    public String getName() {
-        return name;
-    }
+    int getLikes();
 
-    @Override
-    public String getInstructions() {
-        return instructions;
-    }
-
-    @Override
-    public List<String> getIngredients() {
-        return ingredients;
-    }
-
-    @Override
-    public int getLikes() {
-        return likes;
-    }
-
-    @Override
-    public Map<Account, String> getComments() {
-        return comments;
-    }
+    Map<Account, String> getComments();
 }

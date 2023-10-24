@@ -1,8 +1,10 @@
 package entity;
 
 import java.util.ArrayList;
+import entity.Recipe;
 
-public class account implements account_interface{
+
+public class CommonAccount implements Account {
     private final String username;
 
     private final String password;
@@ -11,7 +13,7 @@ public class account implements account_interface{
 
     private final ArrayList<Recipe> viewedRecipes;
 
-    account(String username, String password, ArrayList<Recipe> favoriteRecipes, ArrayList<Recipe> viewedRecipes){
+    CommonAccount(String username, String password, ArrayList<Recipe> favoriteRecipes, ArrayList<Recipe> viewedRecipes){
         this.username = username;
         this.password = password;
         this.favoriteRecipes = favoriteRecipes;
