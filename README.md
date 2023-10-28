@@ -43,4 +43,15 @@ Process finished with exit code 0
 - Organize recipes alphabetically
 - Organize recipes by the most viewed recipe
 - Recommend (by searching history, favorite recipes or top ten recipes)
+9. Next step:
+- Refine specification
+- Draw a UML class diagram and UML sequence diagram for a core use case
+- Sketch out what the view will look like
+- Think more about what we will be using and how we will be using it for your project
+- Agree on and draft a set of entities based on the problem domain
+- Pick a simple entity and write a DAO
+- Choose a user interaction, draw a picture of what the UI will look like (Java Swing)
+- For each of your user stories, make a user interface
+- Go over your user stories and figure out what those user actions
+  
 
