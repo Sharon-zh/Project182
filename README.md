@@ -47,7 +47,7 @@ Process finished with exit code 0
 - Refine specification
 - Draw a UML class diagram and UML sequence diagram for a core use case
 - Sketch out what the view will look like
-- Think more about what we will be using and how we will be using it for your project
+- Think more about what API we will be using and how we will be using it for your project
 - Agree on and draft a set of entities based on the problem domain
 - Pick a simple entity and write a DAO
 - Choose a user interaction, draw a picture of what the UI will look like (Java Swing)
