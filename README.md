@@ -43,6 +43,7 @@ Process finished with exit code 0
 - Organize recipes alphabetically
 - Organize recipes by the most viewed recipe
 - Recommend (by searching history, favorite recipes or top ten recipes)
+  
 9. Next step:
 - Refine specification
 - Draw a UML class diagram and UML sequence diagram for a core use case
@@ -53,5 +54,19 @@ Process finished with exit code 0
 - Choose a user interaction, draw a picture of what the UI will look like (Java Swing)
 - For each of your user stories, make a user interface
 - Go over your user stories and figure out what those user actions
+  
+10. Implemention documentation:
+- W7,8: Interface adapter, Application Business Rule:
+  search, login: Teresa;
+  recommendation, like: Ruby;
+  store, log out: Sharon;
+  comment, sign up: Kevin;
+  
+11. Question:
+  - InmemoryDAO vs FileDAO?
+  - How to use API?
+  - How the data from API is represented in our program?
+  - What is API key?
+  
   
 
