@@ -3,15 +3,21 @@ package api;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONString;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class search {
 
 
     public search() throws IOException {
     }
+
 
     public static void main(String[] args) throws IOException {
         OkHttpClient client = new OkHttpClient();
@@ -22,9 +28,16 @@ public class search {
                 .build();
 
         Response response = client.newCall(request).execute();
-        System.out.println(response);
+//        System.out.println(response);
         JSONObject responseBody = new JSONObject(response.body().string());
-        System.out.println(responseBody);
+//        System.out.println(responseBody);
+//        JSONArray meal = responseBody.getJSONArray("meals");
+//        JSONObject first = meal.getJSONObject(0);
+//        String id = first.getString("idMeal");
+//        System.out.println(id);
+        HashMap<String, String> recipe = new HashMap<String, String>();
+        recipe.put("n", null);
+
     }
 }
 
