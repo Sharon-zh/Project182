@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.HashMap;
+import entity.Recipe;
 
 
 public class InMemoryRecipeDataAccessObject {
