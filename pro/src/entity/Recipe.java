@@ -1,16 +1,22 @@
 package entity;
 
 import java.util.List;
-import java.util.Map;
+import java.util.HashMap;
 
 public interface Recipe {
     String getName();
 
     String getInstructions();
 
-    List<String> getIngredients();
+    String getCategory();
+
+    HashMap<String, String> getIngredients();
 
     int getLikes();
 
-    Map<Account, String> getComments();
+    HashMap<Account, String> getComments();
+
+    String getImageLink();
+
+    String getYoutubeLink();
 }

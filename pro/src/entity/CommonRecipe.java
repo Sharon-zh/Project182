@@ -1,23 +1,31 @@
 package entity;
 
-import java.util.List;
-import java.util.Map;
-import entity.Account;
+import java.util.HashMap;
 
 public class CommonRecipe implements Recipe {
 
     private final String name;
-    private final String instructions;
-    private final List<String> ingredients;
-    private final int likes;
-    private final Map<Account, String> comments;
 
-    public CommonRecipe(String name, String instructions, List<String> ingredients, int likes, Map<Account, String> comments) {
+    private final String category;
+    private final String instructions;
+    private final HashMap<String, String> ingredients;
+    private final int likes;
+    private final HashMap<Account, String> comments;
+
+    private final String image_link;
+
+    private final String youtube_link;
+
+
+    public CommonRecipe(String name, String category, String instructions, HashMap<String, String> ingredients, int likes, HashMap<Account, String> comments, String image_link, String youtube_link) {
         this.name = name;
         this.instructions = instructions;
         this.ingredients = ingredients;
+        this.category = category;
         this.likes = likes;
         this.comments = comments;
+        this.image_link = image_link;
+        this.youtube_link = youtube_link;
     }
 
     @Override
@@ -31,7 +39,7 @@ public class CommonRecipe implements Recipe {
     }
 
     @Override
-    public List<String> getIngredients() {
+    public HashMap<String, String> getIngredients() {
         return ingredients;
     }
 
@@ -41,7 +49,29 @@ public class CommonRecipe implements Recipe {
     }
 
     @Override
-    public Map<Account, String> getComments() {
+    public HashMap<Account, String> getComments() {
         return comments;
+    }
+
+    @Override
+    public String getImageLink() {
+        return null;
+    }
+
+    @Override
+    public String getYoutubeLink() {
+        return null;
+    }
+
+    public String getCategory(){
+        return category;
+    }
+
+    public String getImage_link(){
+        return image_link;
+    }
+
+    public String getYoutube_link(){
+        return youtube_link;
     }
 }
