@@ -1,5 +1,8 @@
 package service.search.use_case;
 
+import java.util.Map;
+
 public interface SearchDataAccessInterface {
-    public boolean hasResult(Object result);
+    Map searchResult(String searchWord);
+    boolean hasResult(Map result);
 }
