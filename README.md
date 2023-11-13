@@ -6,7 +6,7 @@
    - organize recipes in some meaningful way, such as alphabetically or by the most viewed recipe...
    - user customization: show a list of the user's favorite recipes or most used recipes, (recommend recipes a user may like by the user's searches if possible).
    - write comments  and likes for recipes: collect the number of likes and all comments other users made for a recipe.
-   - api.search for the recipe by ingredient, calories, diet or allergies: show all recipes with the specific searching word or ingredient.
+   - api.service.signup.search for the recipe by ingredient, calories, diet or allergies: show all recipes with the specific searching word or ingredient.
 
 3. The link to the documentation for an API that our team can use related to the domain is as follows:
 - Recipe database:
@@ -57,10 +57,10 @@ Process finished with exit code 0
   
 10. Implemention documentation:
 - W7,8: Interface adapter, Application Business Rule:
-  search, login: Teresa;
+  service.signup.search, login: Teresa;
   recommendation, like: Ruby;
   store, log out: Sharon;
-  comment, sign up: Kevin;
+  service.comment, sign up: Kevin;
   
 11. Question:
   - InmemoryDAO vs FileDAO?
