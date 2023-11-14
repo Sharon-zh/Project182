@@ -56,11 +56,10 @@ Process finished with exit code 0
 - Go over your user stories and figure out what those user actions
   
 10. Implemention documentation:
-- W7,8: Interface adapter, Application Business Rule:
-  service.signup.search, login: Teresa;
-  recommendation, like: Ruby;
-  store, log out: Sharon;
-  service.comment, sign up: Kevin;
+  - service.signup.search, login: Teresa;
+  - recommendation, like: Ruby;
+  - store, log out: Sharon;
+  - service.comment, sign up: Kevin;
   
 11. Question:
   - InmemoryDAO vs FileDAO?
