@@ -67,6 +67,10 @@ Process finished with exit code 0
   - How to use API?
   - How the data from API is represented in our program?
   - What is API key?
-  
+
+12. Plan:
+- 11.13-11.19: finish 8 use cases and 2 tests per use case (controller to presenter, DAO)
+- 11.20-11.26: finish 1 test and view for each use case (finish the coding part of the project)
+- 11.27-12.3: slides
   
 
