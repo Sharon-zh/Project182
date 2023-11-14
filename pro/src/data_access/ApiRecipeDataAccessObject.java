@@ -1,4 +1,4 @@
-package service.search.data_access;
+package data_access;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.util.HashMap;
 
 
-public class InMemoryRecipeDataAccessObject {
+public class ApiRecipeDataAccessObject {
     private final String keyword;
 
-    public InMemoryRecipeDataAccessObject(String keyword){
+    public ApiRecipeDataAccessObject(String keyword){
         this.keyword = keyword;
     }
 
