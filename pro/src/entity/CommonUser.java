@@ -1,12 +1,14 @@
 package entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 class CommonUser implements User {
 
     private final String name;
     private final String password;
     private final LocalDateTime creationTime;
+    private final ArrayList<Recipe> favoriteRecipes;
 
     /**
      * Requires: password is valid.
@@ -14,9 +16,11 @@ class CommonUser implements User {
      * @param password
      */
     CommonUser(String name, String password, LocalDateTime creationTime) {
+        ArrayList<Recipe> favoriteRecipes = new ArrayList<Recipe>();
         this.name = name;
         this.password = password;
         this.creationTime = creationTime;
+        this.favoriteRecipes = favoriteRecipes;
     }
 
     @Override
@@ -33,4 +37,6 @@ class CommonUser implements User {
     public LocalDateTime getCreationTime() {
         return creationTime;
     }
+    public ArrayList<Recipe> getFavoriteRecipes(){return favoriteRecipes;}
+
 }
