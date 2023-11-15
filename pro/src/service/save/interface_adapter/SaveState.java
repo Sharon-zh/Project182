@@ -4,7 +4,7 @@ public class SaveState {
     private String successMessage = "";
 
 
-    public void ClearState(SaveState copy) {
+    public SaveState(SaveState copy) {
         successMessage = copy.successMessage;
     }
 
