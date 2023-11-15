@@ -4,10 +4,10 @@ import entity.User;
 import entity.UserFactory;
 
 public class SaveInteractor implements SaveInputBoundary {
-    final SaveUserDataAccessInterface userDataAccessObject;
+    final SaveRecipeDataAccessInterface userDataAccessObject;
     final SaveOutputBoundary userPresenter;
     final UserFactory userFactory;
-    public SaveInteractor(SaveUserDataAccessInterface saveDataAccessInterface,
+    public SaveInteractor(SaveRecipeDataAccessInterface saveDataAccessInterface,
                           SaveOutputBoundary saveOutputBoundary,
                           UserFactory userFactory) {
         this.userDataAccessObject = saveDataAccessInterface;
