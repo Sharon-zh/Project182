@@ -2,7 +2,7 @@ package entity;
 
 import java.util.List;
 import java.util.HashMap;
-import entity.Account;
+import entity.User;
 public interface Recipe {
     String getName();
 
@@ -14,7 +14,7 @@ public interface Recipe {
 
     int getLikes();
 
-    HashMap<Account, String> getComments();
+    HashMap<User, String> getComments();
 
     String getImageLink();
 

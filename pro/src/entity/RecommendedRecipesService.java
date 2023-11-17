@@ -18,5 +18,4 @@ public class RecommendedRecipesService implements RecommendedRecipes{
     public ArrayList<Recipe> getRecommendedRecipes() {
         return recommendedRecipes;
     }
-
 }

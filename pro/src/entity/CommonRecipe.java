@@ -1,7 +1,7 @@
 package entity;
 
 import java.util.HashMap;
-import entity.Account;
+import entity.User;
 
 public class CommonRecipe implements Recipe {
 
@@ -11,22 +11,23 @@ public class CommonRecipe implements Recipe {
     private final String instructions;
     private final HashMap<String, String> ingredients;
     private final int likes;
-    private final HashMap<Account, String> comments;
+    private final HashMap<User, String> comments;
 
-    private final String image_link;
+    private final String imageLink;
 
-    private final String youtube_link;
+    private final String youtubeLink;
 
 
-    public CommonRecipe(String name, String category, String instructions, HashMap<String, String> ingredients, int likes, HashMap<Account, String> comments, String image_link, String youtube_link) {
+    public CommonRecipe(String name, String category, String instructions, HashMap<String, String> ingredients,
+                        int likes, HashMap<User, String> comments, String imageLink, String youtubeLink) {
         this.name = name;
         this.instructions = instructions;
         this.ingredients = ingredients;
         this.category = category;
         this.likes = likes;
         this.comments = comments;
-        this.image_link = image_link;
-        this.youtube_link = youtube_link;
+        this.imageLink = imageLink;
+        this.youtubeLink = youtubeLink;
     }
 
     @Override
@@ -50,29 +51,21 @@ public class CommonRecipe implements Recipe {
     }
 
     @Override
-    public HashMap<Account, String> getComments() {
+    public HashMap<User, String> getComments() {
         return comments;
     }
 
     @Override
     public String getImageLink() {
-        return null;
+        return imageLink;
     }
 
     @Override
     public String getYoutubeLink() {
-        return null;
+        return youtubeLink;
     }
 
-    public String getCategory(){
+    public String getCategory() {
         return category;
-    }
-
-    public String getImage_link(){
-        return image_link;
-    }
-
-    public String getYoutube_link(){
-        return youtube_link;
     }
 }
