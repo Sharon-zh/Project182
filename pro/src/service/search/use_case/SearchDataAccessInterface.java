@@ -4,6 +4,6 @@ import java.io.IOException;
 import java.util.Map;
 
 public interface SearchDataAccessInterface {
-    Map searchResult(String searchWord) throws IOException;
+    Map searchResult(String searchWord);
     boolean hasResult(Map result);
 }
