@@ -1,6 +1,5 @@
 package service.save.interface_adapter;
 
-import entity.User;
 import service.save.use_case.SaveInputBoundary;
 import service.save.use_case.SaveInputData;
 
@@ -10,8 +9,8 @@ public class SaveController {
         this.saveUseCaseInteractor = saveUseCaseInteractor;
     }
 
-    public void execute(String recipeName, User user) {
-        SaveInputData SaveInputData = new SaveInputData(recipeName, user);
+    public void execute(String userName, String recipeName) {
+        SaveInputData SaveInputData = new SaveInputData(userName, recipeName);
 
         saveUseCaseInteractor.execute(SaveInputData);
     }

@@ -15,7 +15,7 @@ class CommonUser implements User {
      * @param name
      * @param password
      */
-    CommonUser(String name, String password, LocalDateTime creationTime) {
+    public CommonUser(String name, String password, LocalDateTime creationTime) {
         ArrayList<String> favoriteRecipes = new ArrayList<String>();
         this.name = name;
         this.password = password;
@@ -27,12 +27,10 @@ class CommonUser implements User {
     public String getName() {
         return name;
     }
-
     @Override
     public String getPassword() {
         return password;
     }
-
     @Override
     public LocalDateTime getCreationTime() {
         return creationTime;

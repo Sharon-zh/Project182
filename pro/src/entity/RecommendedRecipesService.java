@@ -10,7 +10,7 @@ public class RecommendedRecipesService implements RecommendedRecipes{
     /**
      * @param recommendedRecipes
      */
-    RecommendedRecipesService(ArrayList<Recipe> recommendedRecipes) {
+    public RecommendedRecipesService(ArrayList<Recipe> recommendedRecipes) {
         this.recommendedRecipes = recommendedRecipes;
     }
 
