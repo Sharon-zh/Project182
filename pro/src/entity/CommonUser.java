@@ -8,15 +8,15 @@ class CommonUser implements User {
     private final String name;
     private final String password;
     private final LocalDateTime creationTime;
-    private final ArrayList<Recipe> favoriteRecipes;
+    private final ArrayList<String> favoriteRecipes;
 
     /**
      * Requires: password is valid.
      * @param name
      * @param password
      */
-    CommonUser(String name, String password, LocalDateTime creationTime) {
-        ArrayList<Recipe> favoriteRecipes = new ArrayList<Recipe>();
+    public CommonUser(String name, String password, LocalDateTime creationTime) {
+        ArrayList<String> favoriteRecipes = new ArrayList<String>();
         this.name = name;
         this.password = password;
         this.creationTime = creationTime;
@@ -27,16 +27,15 @@ class CommonUser implements User {
     public String getName() {
         return name;
     }
-
     @Override
     public String getPassword() {
         return password;
     }
-
     @Override
     public LocalDateTime getCreationTime() {
         return creationTime;
     }
-    public ArrayList<Recipe> getFavoriteRecipes(){return favoriteRecipes;}
+    public ArrayList<String> getFavoriteRecipes(){return favoriteRecipes;}
+    public void setFavoriteRecipes(String recipeName){this.favoriteRecipes.add(recipeName);}
 
 }

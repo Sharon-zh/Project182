@@ -11,5 +11,6 @@ public interface User {
 
     LocalDateTime getCreationTime();
 
-    ArrayList<Recipe> getFavoriteRecipes();
+    ArrayList<String> getFavoriteRecipes();
+    void setFavoriteRecipes(String recipeName);
 }

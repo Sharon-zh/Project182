@@ -10,7 +10,7 @@ public class PopularRecipesService implements PopularRecipes{
     /**
      * @param topTenRecipes
      */
-    PopularRecipesService(ArrayList<Recipe> topTenRecipes) {
+    public PopularRecipesService(ArrayList<Recipe> topTenRecipes) {
         this.topTenRecipes = topTenRecipes;
     }
 
