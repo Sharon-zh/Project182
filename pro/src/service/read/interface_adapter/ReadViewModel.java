@@ -1,23 +1,22 @@
-package service.save.interface_adapter;
+package service.read.interface_adapter;
 
 import interface_adapter.ViewModel;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class SaveViewModel extends ViewModel {
+public class ReadViewModel extends ViewModel {
 
-    private SaveState state = new SaveState();
+    private ReadState state = new ReadState();
 
-    public SaveViewModel() {
-        super("save the recipe");
+    public ReadViewModel() {
+        super("read favourite recipes");
     }
 
-    public void setState(SaveState state) {
+    public void setState(ReadState state) {
         this.state = state;
     }
 
-    public SaveState getState() {
+    public ReadState getState() {
         return state;
     }
 
@@ -25,7 +24,7 @@ public class SaveViewModel extends ViewModel {
 
     @Override
     public void firePropertyChanged() {
-        support.firePropertyChange("saveState", null, this.state);
+        support.firePropertyChange("readState", null, this.state);
     }
 
     @Override

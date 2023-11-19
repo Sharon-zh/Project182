@@ -25,4 +25,8 @@ public class LoggedInState {
         return favoriteRecipes;
     }
     public void setFavoriteRecipes(String recipeName) {this.favoriteRecipes.add(recipeName);}
+
+    public void removeFromFavoriteRecipes(String recipeName) {
+        this.favoriteRecipes.remove(recipeName);
+    }
 }

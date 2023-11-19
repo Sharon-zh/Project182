@@ -1,7 +1,6 @@
 package service.save.use_case;
 
 
-
 public class SaveInteractor implements SaveInputBoundary {
     final SaveRecipeDataAccessInterface userDataAccessObject;
     final SaveOutputBoundary userPresenter;

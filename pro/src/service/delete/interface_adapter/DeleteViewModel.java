@@ -1,23 +1,23 @@
-package service.save.interface_adapter;
+package service.delete.interface_adapter;
 
 import interface_adapter.ViewModel;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class SaveViewModel extends ViewModel {
+public class DeleteViewModel extends ViewModel {
 
-    private SaveState state = new SaveState();
+    private DeleteState state = new DeleteState();
 
-    public SaveViewModel() {
+    public DeleteViewModel() {
         super("save the recipe");
     }
 
-    public void setState(SaveState state) {
+    public void setState(DeleteState state) {
         this.state = state;
     }
 
-    public SaveState getState() {
+    public DeleteState getState() {
         return state;
     }
 

@@ -10,8 +10,8 @@ public class SaveController {
     }
 
     public void execute(String userName, String recipeName) {
-        SaveInputData SaveInputData = new SaveInputData(userName, recipeName);
+        SaveInputData saveInputData = new SaveInputData(userName, recipeName);
 
-        saveUseCaseInteractor.execute(SaveInputData);
+        saveUseCaseInteractor.execute(saveInputData);
     }
 }
