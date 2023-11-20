@@ -1,10 +1,11 @@
 package service.login.interface_adapter;
 
 import interface_adapter.ViewManagerModel;
-import interface_adapter.logged_in.LoggedInState;
-import interface_adapter.logged_in.LoggedInViewModel;
-import use_case.login.LoginOutputBoundary;
-import use_case.login.LoginOutputData;
+import service.logged_in.interface_adapter.LoggedInState;
+import service.logged_in.interface_adapter.LoggedInViewModel;
+import service.login.use_case.LoginOutputBoundary;
+import service.login.use_case.LoginOutputData;
+
 
 public class LoginPresenter implements LoginOutputBoundary {
 

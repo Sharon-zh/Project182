@@ -1,7 +1,8 @@
 package service.login.interface_adapter;
 
-import use_case.login.LoginInputBoundary;
-import use_case.login.LoginInputData;
+
+import service.login.use_case.LoginInputBoundary;
+import service.login.use_case.LoginInputData;
 
 public class LoginController {
 
