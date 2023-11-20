@@ -1,16 +1,16 @@
 package data_access;
 
 import entity.User;
-import service.delete.use_case.DeleteRecipeDataAccessInterface;
-import service.read.use_case.ReadRecipeDataAccessInterface;
-import service.save.use_case.SaveRecipeDataAccessInterface;
+import service.remove_favourite_recipe.use_case.RemoveRecipeDataAccessInterface;
+import service.load_favourite_recipes.use_case.LoadRecipesDataAccessInterface;
+import service.save_favourite_recipe.use_case.SaveRecipeDataAccessInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, DeleteRecipeDataAccessInterface,
-        ReadRecipeDataAccessInterface {
+public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, RemoveRecipeDataAccessInterface,
+        LoadRecipesDataAccessInterface {
     private final Map<String, User> accounts = new HashMap<>();
     @Override
     public void saveRecipe(String userName, String recipeName) {
@@ -21,7 +21,7 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
     }
 
     @Override
-    public void deleteRecipe(String userName, String recipeName) {
+    public void removeRecipe(String userName, String recipeName) {
         accounts.get(userName).getFavoriteRecipes().remove(recipeName);
     }
 }
