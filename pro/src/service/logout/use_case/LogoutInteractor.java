@@ -1,6 +1,5 @@
 package service.logout.use_case;
 
-
 public class LogoutInteractor implements LogoutInputBoundary {
     final LogoutOutputBoundary userPresenter;
 
@@ -9,7 +8,9 @@ public class LogoutInteractor implements LogoutInputBoundary {
     }
 
     @Override
-    public void execute() {
-            userPresenter.prepareSuccessView("Log out successfully!");
+    public void execute(LogoutInputData logoutInputData) {
+        LogoutOutputData logoutOutputData = new LogoutOutputData(logoutInputData.getUsername());
+
+        userPresenter.prepareSuccessView(logoutOutputData);
         }
 }

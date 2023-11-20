@@ -2,20 +2,15 @@ package data_access;
 
 import entity.User;
 import entity.UserFactory;
-import service.delete.use_case.DeleteRecipeDataAccessInterface;
-import service.read.use_case.ReadRecipeDataAccessInterface;
-import service.save.use_case.SaveRecipeDataAccessInterface;
 import service.signup.use_case.SignupUserDataAccessInterface;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class FileUserDataAccessObject implements SignupUserDataAccessInterface, SaveRecipeDataAccessInterface, DeleteRecipeDataAccessInterface,
-        ReadRecipeDataAccessInterface {
+public class FileUserDataAccessObject implements SignupUserDataAccessInterface{
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -53,18 +48,6 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
                 }
             }
         }
-    }
-    @Override
-    public void saveRecipe(String userName, String recipeName) {
-        accounts.get(userName).setFavoriteRecipes(recipeName);
-    }
-    public ArrayList<String> loadFavouriteRecipes(String userName) {
-        return accounts.get(userName).getFavoriteRecipes();
-    }
-
-    @Override
-    public void deleteRecipe(String userName, String recipeName) {
-        accounts.get(userName).getFavoriteRecipes().remove(recipeName);
     }
 
     @Override

@@ -2,28 +2,25 @@ package service.logout.interface_adapter;
 
 import interface_adapter.ViewManagerModel;
 import service.logout.use_case.LogoutOutputBoundary;
-import service.search.interface_adapter.SearchViewModel;
+import service.logout.use_case.LogoutOutputData;
 
 public class LogoutPresenter implements LogoutOutputBoundary {
-    private final SearchViewModel searchViewModel;
-    private final LogoutViewModel logoutViewModel;
+    private final LoginViewModel loginViewModel;
 
     private ViewManagerModel viewManagerModel;
 
-    public LogoutPresenter(ViewManagerModel viewManagerModel, SearchViewModel searchViewModel,
-                           LogoutViewModel logoutViewModel) {
+    public LogoutPresenter(ViewManagerModel viewManagerModel, LoginViewModel loginViewModel) {
         this.viewManagerModel = viewManagerModel;
-        this.searchViewModel = searchViewModel;
-        this.logoutViewModel = logoutViewModel;
+        this.loginViewModel = loginViewModel;
     }
 
     @Override
-    public void prepareSuccessView(String logoutMessage) {
-        LogoutState logoutState = logoutViewModel.getState();
-        logoutState.setLogoutMessage(logoutMessage);
-        logoutViewModel.firePropertyChanged();
+    public void prepareSuccessView(LogoutOutputData logoutOutputData) {
+        LoginState loginState = loginViewModel.getState();
+        loginState.setUsername(logoutOutputData.getUsername());
+        loginViewModel.firePropertyChanged();
 
-        viewManagerModel.setActiveView(searchViewModel.getViewName());
+        viewManagerModel.setActiveView(loginViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }
 }

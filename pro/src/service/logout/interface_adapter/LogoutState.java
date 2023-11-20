@@ -2,19 +2,19 @@ package service.logout.interface_adapter;
 
 public class LogoutState {
 
-    private String logoutMessage = "";
+    private String username = "";
 
     public LogoutState(LogoutState copy) {
-        logoutMessage = copy.logoutMessage;
+        username = copy.username;
     }
 
     public LogoutState() {
     }
 
-    public String getLogoutMessage() {
-        return logoutMessage;
+    public String getUsername() {
+        return username;
     }
-    public void setLogoutMessage(String logoutMessage) {
-        this.logoutMessage = logoutMessage;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
