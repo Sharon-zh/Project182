@@ -16,11 +16,10 @@ class CommonUser implements User {
      * @param password
      */
     public CommonUser(String name, String password, LocalDateTime creationTime) {
-        ArrayList<String> favoriteRecipes = new ArrayList<String>();
         this.name = name;
         this.password = password;
         this.creationTime = creationTime;
-        this.favoriteRecipes = favoriteRecipes;
+        this.favoriteRecipes = new ArrayList<String>();
     }
 
     @Override

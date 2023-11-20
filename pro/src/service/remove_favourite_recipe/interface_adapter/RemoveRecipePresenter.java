@@ -22,9 +22,5 @@ public class RemoveRecipePresenter implements RemoveRecipeOutputBoundary {
         String successMessage = "Delete " + removeRecipeOutputData.getRecipeName() + " successfully!";
         removeRecipeState.setSuccessMessage(successMessage);
         removeRecipeViewModel.firePropertyChanged();
-
-        LoggedInState loggedInState = loggedInViewModel.getState();
-        loggedInState.removeFromFavoriteRecipes(removeRecipeOutputData.getRecipeName());
-        loggedInViewModel.firePropertyChanged();
     }
 }
