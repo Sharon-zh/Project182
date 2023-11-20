@@ -3,7 +3,6 @@ package service.load_favourite_recipes;
 import data_access.InMemoryUserDataAccessObject;
 import org.junit.Before;
 import org.junit.Test;
-import service.logged_in.interface_adapter.LoggedInViewModel;
 import service.load_favourite_recipes.use_case.*;
 import service.save_favourite_recipe.interface_adapter.SaveRecipePresenter;
 import service.save_favourite_recipe.interface_adapter.SaveRecipeViewModel;
@@ -25,8 +24,7 @@ public class LoadRecipesInteractorTest {
         SaveRecipeInputData inputData = new SaveRecipeInputData("Lisa", "Fish Stew with Rouille");
         InMemoryUserDataAccessObject userRepository = new InMemoryUserDataAccessObject();
         SaveRecipeViewModel saveRecipeViewModel = new SaveRecipeViewModel();
-        LoggedInViewModel loggedInViewModel = new LoggedInViewModel();
-        SaveRecipeOutputBoundary successPresenter = new SaveRecipePresenter(saveRecipeViewModel, loggedInViewModel);
+        SaveRecipeOutputBoundary successPresenter = new SaveRecipePresenter(saveRecipeViewModel);
         SaveRecipeInputBoundary interactor = new SaveRecipeInteractor(userRepository, successPresenter);
         interactor.execute(inputData);
     }

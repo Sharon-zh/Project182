@@ -1,10 +1,7 @@
 package service.logout;
 
 import org.junit.Test;
-import service.logout.use_case.LogoutInputBoundary;
-import service.logout.use_case.LogoutInteractor;
-import service.logout.use_case.LogoutOutputBoundary;
-
+import service.logout.use_case.*;
 import static org.junit.Assert.assertEquals;
 
 public class LogoutInteractorTest {
@@ -12,14 +9,16 @@ public class LogoutInteractorTest {
 
     @Test
     public void successTest() {
+        LogoutInputData inputData = new LogoutInputData("Lisa");
+
         LogoutOutputBoundary successPresenter = new LogoutOutputBoundary() {
             @Override
-            public void prepareSuccessView(String logoutMessage) {
-                assertEquals(logoutMessage, "Log out successfully!");
+            public void prepareSuccessView(LogoutOutputData output) {
+                assertEquals(output.getUsername(), "Lisa");
             }
         };
 
         LogoutInputBoundary interactor = new LogoutInteractor(successPresenter);
-        interactor.execute();
+        interactor.execute(inputData);
     }
 }

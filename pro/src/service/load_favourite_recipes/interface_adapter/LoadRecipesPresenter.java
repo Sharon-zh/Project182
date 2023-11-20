@@ -8,25 +8,17 @@ import java.util.ArrayList;
 
 public class LoadRecipesPresenter implements LoadRecipesOutputBoundary {
     private final LoadRecipesViewModel loadRecipesViewModel;
-    private ViewManagerModel viewManagerModel;
 
-
-
-    public LoadRecipesPresenter(LoadRecipesViewModel loadRecipesViewModel, ViewManagerModel viewManagerModel) {
+    public LoadRecipesPresenter(LoadRecipesViewModel loadRecipesViewModel) {
         this.loadRecipesViewModel = loadRecipesViewModel;
-        this.viewManagerModel = viewManagerModel;
     }
 
 
     @Override
     public void prepareSuccessView(LoadRecipesOutputData loadRecipesOutputData) {
         LoadRecipesState loadRecipesState = loadRecipesViewModel.getState();
-        ArrayList<String> favouriteRecipes = loadRecipesOutputData.getFavouriteRecipes();
-        loadRecipesState.setFavouriteRecipes(favouriteRecipes);
+        loadRecipesState.setFavouriteRecipes(loadRecipesOutputData.getFavouriteRecipes());
         loadRecipesViewModel.firePropertyChanged();
-
-        viewManagerModel.setActiveView(loadRecipesViewModel.getViewName());
-        viewManagerModel.firePropertyChanged();
     }
 
     @Override
@@ -35,5 +27,4 @@ public class LoadRecipesPresenter implements LoadRecipesOutputBoundary {
         loadRecipesState.setEmptyMessage(emptyMessage);
         loadRecipesViewModel.firePropertyChanged();
     }
-
 }

@@ -1,7 +1,7 @@
 package service.logout.use_case;
 
 public interface LogoutInputBoundary {
-    void execute();
+    void execute(LogoutInputData logoutInputData);
 }
 
 

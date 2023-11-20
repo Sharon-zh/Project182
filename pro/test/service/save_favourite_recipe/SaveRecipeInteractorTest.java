@@ -3,7 +3,6 @@ package service.save_favourite_recipe;
 import data_access.InMemoryUserDataAccessObject;
 import org.junit.Test;
 import service.save_favourite_recipe.use_case.*;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

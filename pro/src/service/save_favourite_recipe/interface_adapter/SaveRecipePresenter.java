@@ -1,18 +1,14 @@
 package service.save_favourite_recipe.interface_adapter;
 
-import service.logged_in.interface_adapter.LoggedInState;
-import service.logged_in.interface_adapter.LoggedInViewModel;
 import service.save_favourite_recipe.use_case.SaveRecipeOutputBoundary;
 import service.save_favourite_recipe.use_case.SaveRecipeOutputData;
 
 public class SaveRecipePresenter implements SaveRecipeOutputBoundary {
     private final SaveRecipeViewModel saveRecipeViewModel;
-    private final LoggedInViewModel loggedInViewModel;
 
 
-    public SaveRecipePresenter(SaveRecipeViewModel saveRecipeViewModel, LoggedInViewModel loggedInViewModel) {
+    public SaveRecipePresenter(SaveRecipeViewModel saveRecipeViewModel) {
         this.saveRecipeViewModel = saveRecipeViewModel;
-        this.loggedInViewModel = loggedInViewModel;
     }
 
 
