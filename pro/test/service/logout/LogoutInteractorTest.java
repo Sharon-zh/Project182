@@ -14,7 +14,8 @@ public class LogoutInteractorTest {
         LogoutOutputBoundary successPresenter = new LogoutOutputBoundary() {
             @Override
             public void prepareSuccessView(LogoutOutputData output) {
-                assertEquals(output.getUsername(), "Lisa");
+
+                assertEquals("Lisa",output.getUsername());
             }
         };
 

@@ -37,7 +37,7 @@ public class LoadRecipesInteractorTest {
             public void prepareSuccessView(LoadRecipesOutputData output) {
                 ArrayList<String> expectedFR = new ArrayList<String>();
                 expectedFR.add("Fish Stew with Rouille");
-                assertEquals(output.getFavouriteRecipes(), expectedFR);
+                assertEquals(expectedFR, output.getFavouriteRecipes());
             }
 
             @Override
