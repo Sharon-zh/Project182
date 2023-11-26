@@ -8,7 +8,7 @@ import java.beans.PropertyChangeSupport;
 public class LikeViewModel extends ViewModel {
     private LikeState state = new LikeState();
 
-    public LikeViewModel() {super("like");}
+    public LikeViewModel() {super("recipe");}
     public void setState(LikeState state) {
         this.state = state;
     }

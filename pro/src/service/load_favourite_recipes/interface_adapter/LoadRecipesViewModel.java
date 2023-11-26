@@ -9,7 +9,7 @@ public class LoadRecipesViewModel extends ViewModel {
     private LoadRecipesState state = new LoadRecipesState();
 
     public LoadRecipesViewModel() {
-        super("");
+        super("favourite recipe");
     }
 
     public void setState(LoadRecipesState state) {
@@ -24,7 +24,7 @@ public class LoadRecipesViewModel extends ViewModel {
 
     @Override
     public void firePropertyChanged() {
-        support.firePropertyChange("load favourite recipes", null, this.state);
+        support.firePropertyChange("load recipes", null, this.state);
     }
 
     @Override

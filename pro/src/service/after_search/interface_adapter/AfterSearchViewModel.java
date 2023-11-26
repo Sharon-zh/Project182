@@ -11,14 +11,14 @@ public class AfterSearchViewModel extends ViewModel {
 
     public static final String GOBACK_BUTTON_LABEL = "go back";
 
-    public AfterSearchViewModel() {super("after search");}
+    public AfterSearchViewModel() {super("search result");}
 
     public void setState(AfterSearchState state) {
         this.state = state;
     }
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     public void firePropertyChanged() {
-        support.firePropertyChange("new state", null, this.state);
+        support.firePropertyChange("after search", null, this.state);
     }
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
