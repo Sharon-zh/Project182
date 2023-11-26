@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
 import entity.User;
@@ -14,7 +15,7 @@ public interface Recipe {
 
     int getLikes();
 
-    HashMap<User, String> getComments();
+    ArrayList<String> getComments();
 
     String getImageLink();
 

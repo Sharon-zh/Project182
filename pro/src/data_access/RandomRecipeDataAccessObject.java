@@ -7,17 +7,21 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONObject;
+import service.comment.use_case.CommentDataAccessInterface;
 import service.recommendation.use_case.RecommendationDataAccessInterface;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RandomRecipeDataAccessObject implements RecommendationDataAccessInterface {
     private final RecipeFactory recipeFactory;
+    private final CommentDataAccessInterface commentDataAccessInterface;
 
-    public RandomRecipeDataAccessObject(RecipeFactory recipeFactory) {
+    public RandomRecipeDataAccessObject(RecipeFactory recipeFactory, CommentDataAccessInterface commentDataAccessInterface) {
         this.recipeFactory = recipeFactory;
+        this.commentDataAccessInterface = commentDataAccessInterface;
     }
 
     private JSONObject random() {
@@ -60,7 +64,7 @@ public class RandomRecipeDataAccessObject implements RecommendationDataAccessInt
             }
         }
         int likes = 0;
-        HashMap<User, String> comments = new HashMap();
+        ArrayList<String> comments = commentDataAccessInterface.getComments(name);
         Recipe recipe = recipeFactory.create(name, category, instructions, ingredients, likes, comments, imageLink, youtubeLink);
         return recipe;
     }

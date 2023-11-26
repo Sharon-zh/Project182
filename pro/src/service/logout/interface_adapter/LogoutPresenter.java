@@ -1,6 +1,8 @@
 package service.logout.interface_adapter;
 
 import interface_adapter.ViewManagerModel;
+import service.login.interface_adapter.LoginState;
+import service.login.interface_adapter.LoginViewModel;
 import service.logout.use_case.LogoutOutputBoundary;
 import service.logout.use_case.LogoutOutputData;
 

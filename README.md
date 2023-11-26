@@ -70,6 +70,11 @@ Process finished with exit code 0
 12. Plan:
 - 11.13-11.19: finish 8 use cases and 2 tests per use case (controller to presenter, DAO)
 - 11.20-11.26: finish 1 test and view for each use case (finish the coding part of the project)
+     * Kevin: signup view, main, commentUseCaseFactory, signupUseCaseFactory, load favorite recipe UseCaseFactory, recommend view
+     * Ruby: login view, remove favorite recipe UseCaseFactory, logoutUseCaseFactory, likeUseCaseFactory, recommendUseCaseFactory, recipe view
+     * Teresa: save favorite recipe UseCaseFactory, searchUseCaseFactory, after_searchUseCaseFactory, loginUseCaseFactory, search result view
+     * Sharon: search view
 - 11.27-12.3: slides
-  
+
+
 

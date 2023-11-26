@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import entity.User;
 
@@ -11,7 +12,7 @@ public class CommonRecipe implements Recipe {
     private final String instructions;
     private final HashMap<String, String> ingredients;
     private final int likes;
-    private final HashMap<User, String> comments;
+    private final ArrayList<String> comments;
 
     private final String imageLink;
 
@@ -19,7 +20,7 @@ public class CommonRecipe implements Recipe {
 
 
     public CommonRecipe(String name, String category, String instructions, HashMap<String, String> ingredients,
-                        int likes, HashMap<User, String> comments, String imageLink, String youtubeLink) {
+                        int likes, ArrayList<String> comments, String imageLink, String youtubeLink) {
         this.name = name;
         this.instructions = instructions;
         this.ingredients = ingredients;
@@ -51,7 +52,7 @@ public class CommonRecipe implements Recipe {
     }
 
     @Override
-    public HashMap<User, String> getComments() {
+    public ArrayList<String> getComments() {
         return comments;
     }
 
@@ -68,4 +69,6 @@ public class CommonRecipe implements Recipe {
     public String getCategory() {
         return category;
     }
+
+    public void setComments(){}
 }
