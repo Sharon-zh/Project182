@@ -1,6 +1,7 @@
 package data_access;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,14 +12,18 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONObject;
+import service.comment.use_case.CommentDataAccessInterface;
 import service.search.use_case.SearchDataAccessInterface;
 
 public class ApiRecipeDataAccessObject implements SearchDataAccessInterface {
 
     private final RecipeFactory recipeFactory;
 
-    public ApiRecipeDataAccessObject(RecipeFactory recipeFactory) {
+    private final CommentDataAccessInterface commentDataAccessInterface;
+
+    public ApiRecipeDataAccessObject(RecipeFactory recipeFactory, CommentDataAccessInterface commentDataAccessInterface) {
         this.recipeFactory = recipeFactory;
+        this.commentDataAccessInterface = commentDataAccessInterface;
     }
 
     private JSONObject searchInMealDB(String keyword) {
@@ -63,7 +68,7 @@ public class ApiRecipeDataAccessObject implements SearchDataAccessInterface {
             }
         }
         int likes = 0;
-        HashMap<User, String> comments = new HashMap();
+        ArrayList<String> comments = commentDataAccessInterface.getComments(name);
         Recipe recipe = recipeFactory.create(name, category, instructions, ingredients, likes, comments, image_link, youtube_link);
         return recipe;
     }
