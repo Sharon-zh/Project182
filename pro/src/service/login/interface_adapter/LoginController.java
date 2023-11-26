@@ -1,6 +1,5 @@
 package service.login.interface_adapter;
 
-
 import service.login.use_case.LoginInputBoundary;
 import service.login.use_case.LoginInputData;
 

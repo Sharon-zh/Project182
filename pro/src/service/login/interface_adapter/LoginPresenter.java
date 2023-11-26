@@ -6,7 +6,6 @@ import service.logged_in.interface_adapter.LoggedInViewModel;
 import service.login.use_case.LoginOutputBoundary;
 import service.login.use_case.LoginOutputData;
 
-
 public class LoginPresenter implements LoginOutputBoundary {
 
     private final LoginViewModel loginViewModel;
