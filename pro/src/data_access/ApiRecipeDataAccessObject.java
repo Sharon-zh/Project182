@@ -7,12 +7,12 @@ import java.util.Map;
 
 import entity.Recipe;
 import entity.RecipeFactory;
-import entity.User;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONObject;
 import service.comment.use_case.CommentDataAccessInterface;
+import service.like.use_case.LikeDataAccessInterface;
 import service.search.use_case.SearchDataAccessInterface;
 
 public class ApiRecipeDataAccessObject implements SearchDataAccessInterface {
@@ -21,9 +21,12 @@ public class ApiRecipeDataAccessObject implements SearchDataAccessInterface {
 
     private final CommentDataAccessInterface commentDataAccessInterface;
 
-    public ApiRecipeDataAccessObject(RecipeFactory recipeFactory, CommentDataAccessInterface commentDataAccessInterface) {
+    private final LikeDataAccessInterface likeDataAccessInterface;
+
+    public ApiRecipeDataAccessObject(RecipeFactory recipeFactory, CommentDataAccessInterface commentDataAccessInterface, LikeDataAccessInterface likeDataAccessInterface) {
         this.recipeFactory = recipeFactory;
         this.commentDataAccessInterface = commentDataAccessInterface;
+        this.likeDataAccessInterface = likeDataAccessInterface;
     }
 
     private JSONObject searchInMealDB(String keyword) {
@@ -67,7 +70,7 @@ public class ApiRecipeDataAccessObject implements SearchDataAccessInterface {
                 break;
             }
         }
-        int likes = 0;
+        int likes = likeDataAccessInterface.get(name);
         ArrayList<String> comments = commentDataAccessInterface.getComments(name);
         Recipe recipe = recipeFactory.create(name, category, instructions, ingredients, likes, comments, image_link, youtube_link);
         return recipe;
