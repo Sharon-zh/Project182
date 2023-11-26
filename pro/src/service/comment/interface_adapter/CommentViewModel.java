@@ -8,7 +8,7 @@ import java.beans.PropertyChangeSupport;
 public class CommentViewModel extends ViewModel {
     public CommentState state = new CommentState();
     public CommentViewModel() {
-        super("comment view model");
+        super("recipe");
     }
 
     public void setState(CommentState state) {

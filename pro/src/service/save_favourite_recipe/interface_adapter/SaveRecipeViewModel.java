@@ -10,7 +10,7 @@ public class SaveRecipeViewModel extends ViewModel {
     private SaveRecipeState state = new SaveRecipeState();
 
     public SaveRecipeViewModel() {
-        super("");
+        super("recipe");
     }
 
     public void setState(SaveRecipeState state) {
@@ -25,7 +25,7 @@ public class SaveRecipeViewModel extends ViewModel {
 
     @Override
     public void firePropertyChanged() {
-        support.firePropertyChange("save the favourite recipe", null, this.state);
+        support.firePropertyChange("save recipe", null, this.state);
     }
 
     @Override

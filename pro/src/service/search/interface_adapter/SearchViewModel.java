@@ -8,11 +8,11 @@ import java.beans.PropertyChangeSupport;
 public class SearchViewModel extends ViewModel {
 
     private SearchState state = new SearchState();
-    public SearchViewModel() {super("searching for");}
+    public SearchViewModel() {super("main");}
     public void setState(SearchState state) {this.state = state;}
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    public void firePropertyChanged() {support.firePropertyChange("new state", null, this.state);}
+    public void firePropertyChanged() {support.firePropertyChange("search", null, this.state);}
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }

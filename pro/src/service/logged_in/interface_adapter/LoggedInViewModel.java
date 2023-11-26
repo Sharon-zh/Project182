@@ -15,7 +15,7 @@ public class LoggedInViewModel extends ViewModel {
     private String loggedInUser;
 
     public LoggedInViewModel() {
-        super("logged in");
+        super("main");
     }
 
     public void setState(LoggedInState state) {
@@ -27,7 +27,7 @@ public class LoggedInViewModel extends ViewModel {
     // This is what the Login Presenter will call to let the ViewModel know
     // to alert the View
     public void firePropertyChanged() {
-        support.firePropertyChange("state", null, this.state);
+        support.firePropertyChange("logged in", null, this.state);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

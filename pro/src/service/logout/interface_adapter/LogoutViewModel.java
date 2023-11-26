@@ -10,7 +10,7 @@ public class LogoutViewModel extends ViewModel {
     private LogoutState state = new LogoutState();
 
     public LogoutViewModel() {
-        super("");
+        super("main");
     }
 
     public void setState(LogoutState state) {
@@ -20,7 +20,7 @@ public class LogoutViewModel extends ViewModel {
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void firePropertyChanged() {
-        support.firePropertyChange("logout", null, this.state);
+        support.firePropertyChange("log out", null, this.state);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
