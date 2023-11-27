@@ -10,7 +10,7 @@ public class RemoveRecipeViewModel extends ViewModel {
     private RemoveRecipeState state = new RemoveRecipeState();
 
     public RemoveRecipeViewModel() {
-        super("");
+        super("main");
     }
 
     public void setState(RemoveRecipeState state) {
@@ -25,7 +25,7 @@ public class RemoveRecipeViewModel extends ViewModel {
 
     @Override
     public void firePropertyChanged() {
-        support.firePropertyChange("remove the favourite recipe", null, this.state);
+        support.firePropertyChange("remove recipe", null, this.state);
     }
 
     @Override

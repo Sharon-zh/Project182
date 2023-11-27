@@ -4,13 +4,14 @@ import entity.User;
 import service.load_favourite_recipes.use_case.LoadRecipesDataAccessInterface;
 import service.save_favourite_recipe.use_case.SaveRecipeDataAccessInterface;
 import service.remove_favourite_recipe.use_case.RemoveRecipeDataAccessInterface;
+import service.signup.use_case.SignupUserDataAccessInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class InMemoryUserDataAccessObject implements SaveRecipeDataAccessInterface, RemoveRecipeDataAccessInterface,
-        LoadRecipesDataAccessInterface {
+        LoadRecipesDataAccessInterface, SignupUserDataAccessInterface {
     private final Map<String, User> users = new HashMap<>();
 
     @Override
@@ -24,5 +25,18 @@ public class InMemoryUserDataAccessObject implements SaveRecipeDataAccessInterfa
     @Override
     public void removeRecipe(String userName, String recipeName) {
         users.get(userName).getFavoriteRecipes().remove(recipeName);
+    }
+
+    @Override
+    public boolean existsByName(String identifier) {
+        return users.containsKey(identifier);
+    }
+
+    /**
+     * @param user the data to save
+     */
+    @Override
+    public void save(User user) {
+        users.put(user.getName(), user);
     }
 }

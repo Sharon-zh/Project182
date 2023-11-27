@@ -13,7 +13,7 @@ public class SaveRecipeInteractor implements SaveRecipeInputBoundary {
     @Override
     public void execute(SaveRecipeInputData saveRecipeInputData) {
             String userName = saveRecipeInputData.getUserName();
-            String recipeName = saveRecipeInputData.getUserName();
+            String recipeName = saveRecipeInputData.getRecipeName();
             userDataAccessObject.saveRecipe(userName, recipeName);
             SaveRecipeOutputData saveRecipeOutputData = new SaveRecipeOutputData(recipeName, false);
 

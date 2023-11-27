@@ -2,15 +2,17 @@ package data_access;
 
 import entity.User;
 import entity.UserFactory;
+import service.load_favourite_recipes.use_case.LoadRecipesDataAccessInterface;
+import service.remove_favourite_recipe.use_case.RemoveRecipeDataAccessInterface;
+import service.save_favourite_recipe.use_case.SaveRecipeDataAccessInterface;
 import service.signup.use_case.SignupUserDataAccessInterface;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
-public class FileUserDataAccessObject implements SignupUserDataAccessInterface{
+public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, RemoveRecipeDataAccessInterface,
+        LoadRecipesDataAccessInterface, SignupUserDataAccessInterface {
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -25,6 +27,8 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface{
         headers.put("username", 0);
         headers.put("password", 1);
         headers.put("creation_time", 2);
+        headers.put("favourite_recipe", 3);
+
 
         if (csvFile.length() == 0) {
             save();
@@ -33,17 +37,20 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface{
             try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
                 String header = reader.readLine();
 
-                // For later: clean this up by creating a new Exception subclass and handling it in the UI.
-                assert header.equals("username,password,creation_time");
+                assert header.equals("username,password,creation_time,favourite_recipe");
 
                 String row;
                 while ((row = reader.readLine()) != null) {
-                    String[] col = row.split(",");
+                    String[] col = row.split(",\\s");
                     String username = String.valueOf(col[headers.get("username")]);
                     String password = String.valueOf(col[headers.get("password")]);
                     String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
+                    String recipeNames = String.valueOf(col[headers.get("favourite_recipe")]);
+                    String[] splitArray = recipeNames.split(",");
+                    ArrayList<String> favouriteRecipeList = new ArrayList<String>(Arrays.asList(splitArray));
                     LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
                     User user = userFactory.create(username, password, ldt);
+                    user.setFavoriteRecipeList(favouriteRecipeList);
                     accounts.put(username, user);
                 }
             }
@@ -65,12 +72,17 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface{
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(csvFile));
-            writer.write(String.join(",", headers.keySet()));
+            writer.write(String.join(", ", headers.keySet()));
             writer.newLine();
 
             for (User user : accounts.values()) {
-                String line = String.format("%s,%s,%s",
-                        user.getName(), user.getPassword(), user.getCreationTime());
+                String favouriteRecipes = user.getFavoriteRecipes().toString();
+                favouriteRecipes
+                        = favouriteRecipes.replace("[", "")
+                        .replace("]", "")
+                        .replace(" ", "");
+                String line = String.format("%s, %s, %s, %s",
+                        user.getName(), user.getPassword(), user.getCreationTime(), favouriteRecipes);
                 writer.write(line);
                 writer.newLine();
             }
@@ -80,5 +92,22 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface{
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public ArrayList<String> loadFavouriteRecipes(String userName) {
+        return accounts.get(userName).getFavoriteRecipes();
+    }
+
+    @Override
+    public void removeRecipe(String userName, String recipeName) {
+        accounts.get(userName).removeFavoriteRecipes(recipeName);
+        this.save();
+    }
+
+    @Override
+    public void saveRecipe(String userName, String recipeName) {
+        accounts.get(userName).setFavoriteRecipes(recipeName);
+        this.save();
     }
 }

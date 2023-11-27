@@ -13,4 +13,6 @@ public interface User {
 
     ArrayList<String> getFavoriteRecipes();
     void setFavoriteRecipes(String recipeName);
+    void setFavoriteRecipeList(ArrayList<String> recipeList);
+    void removeFavoriteRecipes(String recipeName);
 }

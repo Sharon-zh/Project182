@@ -1,6 +1,9 @@
 package service.load_favourite_recipes;
 
 import data_access.InMemoryUserDataAccessObject;
+import entity.CommonUserFactory;
+import entity.User;
+import entity.UserFactory;
 import org.junit.Before;
 import org.junit.Test;
 import service.load_favourite_recipes.use_case.*;
@@ -11,25 +14,22 @@ import service.save_favourite_recipe.use_case.SaveRecipeInputData;
 import service.save_favourite_recipe.use_case.SaveRecipeInteractor;
 import service.save_favourite_recipe.use_case.SaveRecipeOutputBoundary;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class LoadRecipesInteractorTest {
-    private InMemoryUserDataAccessObject userRepository;
-    @Before
-    public void saveRecipe() {
-        // need to add two users.
-        SaveRecipeInputData inputData = new SaveRecipeInputData("Lisa", "Fish Stew with Rouille");
-        InMemoryUserDataAccessObject userRepository = new InMemoryUserDataAccessObject();
-        SaveRecipeViewModel saveRecipeViewModel = new SaveRecipeViewModel();
-        SaveRecipeOutputBoundary successPresenter = new SaveRecipePresenter(saveRecipeViewModel);
-        SaveRecipeInputBoundary interactor = new SaveRecipeInteractor(userRepository, successPresenter);
-        interactor.execute(inputData);
-    }
+
     @Test
     public void successTest() {
+        InMemoryUserDataAccessObject userRepository = new InMemoryUserDataAccessObject();
+        UserFactory userFactory= new CommonUserFactory();
+        User user = userFactory.create("Lisa", "password", LocalDateTime.now());
+        userRepository.save(user);
+        userRepository.saveRecipe("Lisa", "Fish Stew with Rouille");
+
         LoadRecipesInputData inputData = new LoadRecipesInputData("Lisa");
 
         LoadRecipesOutputBoundary successPresenter = new LoadRecipesOutputBoundary() {
@@ -51,7 +51,12 @@ public class LoadRecipesInteractorTest {
     }
     @Test
     public void failureTest() {
-        LoadRecipesInputData inputData = new LoadRecipesInputData("Paul");
+        InMemoryUserDataAccessObject userRepository = new InMemoryUserDataAccessObject();
+        UserFactory userFactory= new CommonUserFactory();
+        User user = userFactory.create("Lisa", "password", LocalDateTime.now());
+        userRepository.save(user);
+
+        LoadRecipesInputData inputData = new LoadRecipesInputData("Lisa");
 
         LoadRecipesOutputBoundary failurePresenter = new LoadRecipesOutputBoundary() {
             @Override

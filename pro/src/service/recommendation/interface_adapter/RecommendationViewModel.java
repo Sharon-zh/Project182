@@ -7,6 +7,12 @@ import java.beans.PropertyChangeSupport;
 
 public class RecommendationViewModel extends ViewModel {
 
+    public static final String TITLE_LABEL = "Recommendation View";
+
+    public static final String REFRESH_BUTTON_LABEL = "Refresh";
+
+    public static final String CANCEL_BUTTON_LABEL = "Cancel";
+
     private RecommendationState state = new RecommendationState();
 
     public RecommendationViewModel() {super("recommendation");}

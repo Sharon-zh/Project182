@@ -10,8 +10,8 @@ public class CommentController {
         this.commentInputInteractor = commentInputInteractor;
     }
 
-    public void execute(String username, String comment){
-        CommentInputData comment_inputData = new CommentInputData(username, comment);
+    public void execute(String recipeName, String username, String comment){
+        CommentInputData comment_inputData = new CommentInputData(recipeName, username, comment);
         commentInputInteractor.excute(comment_inputData);
     }
 

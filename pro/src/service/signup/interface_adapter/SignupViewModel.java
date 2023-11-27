@@ -7,7 +7,6 @@ import java.beans.PropertyChangeSupport;
 
 public class SignupViewModel extends ViewModel {
 
-    public static final String CLEAR_BUTTON_LABEL = "Clear";
     public static final String TITLE_LABEL = "Sign Up View";
     public static final String USERNAME_LABEL = "Choose username";
     public static final String PASSWORD_LABEL = "Choose password";
@@ -31,7 +30,7 @@ public class SignupViewModel extends ViewModel {
     // This is what the Signup Presenter will call to let the ViewModel know
     // to alert the View
     public void firePropertyChanged() {
-        support.firePropertyChange("signup", null, this.state);
+        support.firePropertyChange("sign up", null, this.state);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
