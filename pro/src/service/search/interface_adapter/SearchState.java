@@ -18,14 +18,12 @@ public class SearchState {
     public SearchState() {}
 
     public String getSearchWord() {return searchWord;}
+    public String getNoResultError() {return noResultError;}
 
-    public void setSearchWord(String searchWord) {
-        this.searchWord = searchWord;
-    }
+    public void setSearchWord(String searchWord) {this.searchWord = searchWord;}
 
     public Map<String, Recipe> getSearchResult() {return result;}
     public void setSearchResult(Map<String, Recipe> result) {this.result = result;}
 
-    public void setNoResultError(String noResultError) {
-        this.noResultError = noResultError;}
+    public void setNoResultError(String noResultError) {this.noResultError = noResultError;}
 }

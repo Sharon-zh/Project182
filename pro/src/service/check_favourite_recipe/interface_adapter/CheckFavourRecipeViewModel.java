@@ -1,34 +1,32 @@
-package service.logout.interface_adapter;
+package service.check_favourite_recipe.interface_adapter;
 
 import interface_adapter.ViewModel;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class LogoutViewModel extends ViewModel {
+public class CheckFavourRecipeViewModel extends ViewModel {
+    private CheckFavourRecipeState state = new CheckFavourRecipeState();
 
-    public static final String LOGOUT_BUTTON_LABEL = "Log out";
-    private LogoutState state = new LogoutState();
-
-    public LogoutViewModel() {
-        super("main");
+    public CheckFavourRecipeViewModel() {
+        super("recipe");
     }
 
-    public void setState(LogoutState state) {
+    public void setState(CheckFavourRecipeState state) {
         this.state = state;
     }
 
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void firePropertyChanged() {
-        support.firePropertyChange("log out", null, this.state);
+        support.firePropertyChange("check favourite recipe", null, this.state);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
 
-    public LogoutState getState() {
+    public CheckFavourRecipeState getState() {
         return state;
     }
 }

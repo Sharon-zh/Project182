@@ -11,11 +11,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.json.JSONObject;
+import service.check_favourite_recipe.use_case.CheckFavourRecipeDataAccessInterface;
 import service.comment.use_case.CommentDataAccessInterface;
 import service.like.use_case.LikeDataAccessInterface;
 import service.search.use_case.SearchDataAccessInterface;
 
-public class ApiRecipeDataAccessObject implements SearchDataAccessInterface {
+public class ApiRecipeDataAccessObject implements SearchDataAccessInterface, CheckFavourRecipeDataAccessInterface {
 
     private final RecipeFactory recipeFactory;
 

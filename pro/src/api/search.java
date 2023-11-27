@@ -1,5 +1,11 @@
 package api;
 
+import data_access.ApiRecipeDataAccessObject;
+import data_access.InmemoryRecipeDataAccessObject;
+import data_access.LikeFileRecipeDateAccessObject;
+import entity.CommonRecipeFactory;
+import entity.Recipe;
+import entity.RecipeFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -8,8 +14,9 @@ import org.json.JSONObject;
 import org.json.JSONString;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Map;
 
 
 public class search {
@@ -38,6 +45,19 @@ public class search {
         HashMap<String, String> recipe = new HashMap<String, String>();
         recipe.put("n", null);
 
+        ApiRecipeDataAccessObject dao = new ApiRecipeDataAccessObject(new CommonRecipeFactory(),
+                new InmemoryRecipeDataAccessObject(), new LikeFileRecipeDateAccessObject("xxxx"));
+        Map<String, Recipe> recipes = dao.searchResult("Beetroot Soup");
+        for(Recipe r: recipes.values()){
+        System.out.println(r.getName());
+        System.out.println(r.getCategory());
+        System.out.println(r.getIngredients());
+        System.out.println(r.getInstructions());
+        System.out.println(r.getLikes());
+        System.out.println(r.getComments());
+        System.out.println(r.getImageLink());
+        System.out.println(r.getYoutubeLink());
+        }
     }
 }
 

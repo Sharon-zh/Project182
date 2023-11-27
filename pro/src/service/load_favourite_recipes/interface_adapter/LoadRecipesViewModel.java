@@ -6,6 +6,7 @@ import java.beans.PropertyChangeSupport;
 
 public class LoadRecipesViewModel extends ViewModel {
 
+    public static final String FAVOURITE_RECIPES_BUTTON_LABEL = "Favourite Recipes";
     private LoadRecipesState state = new LoadRecipesState();
 
     public LoadRecipesViewModel() {
