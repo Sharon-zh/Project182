@@ -2,11 +2,13 @@ package view;
 
 import entity.Recipe;
 import service.check_recipe.interface_adapter.CheckRecipeController;
+import service.check_recipe.interface_adapter.CheckRecipeViewModel;
 import service.recommendation.interface_adapter.RecommendationController;
 import service.recommendation.interface_adapter.RecommendationPresenter;
 import service.recommendation.interface_adapter.RecommendationState;
 import service.recommendation.interface_adapter.RecommendationViewModel;
 import service.return_to_main.interface_adapter.ReturnToMainController;
+import service.return_to_main.interface_adapter.ReturnToMainViewModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,14 +23,27 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
     public final String viewName = "recommend";
 
     private final RecommendationViewModel recommendationViewModel;
+    private final RecommendationController recommendationController;
+    private final CheckRecipeController checkRecipeController;
+    private final ReturnToMainController returnToMainController;
+    private final CheckRecipeViewModel checkRecipeViewModel;
+
+    private final ReturnToMainViewModel returnToMainViewModel;
 
     private final JButton refresh;
 
     private final JButton cancel;
 
-    public RecommendView(RecommendationController recommendationController, CheckRecipeController checkRecipeController, ReturnToMainController returnToMainController, RecommendationViewModel recommendationViewModel, RecommendationPresenter recommendationPresenter) {
+    public RecommendView(RecommendationController recommendationController, CheckRecipeController checkRecipeController, ReturnToMainController returnToMainController, RecommendationViewModel recommendationViewModel, CheckRecipeViewModel checkRecipeViewModel, ReturnToMainViewModel returnToMainViewModel) {
+        this.recommendationController = recommendationController;
         this.recommendationViewModel = recommendationViewModel;
+        this.checkRecipeController = checkRecipeController;
+        this.checkRecipeViewModel = checkRecipeViewModel;
+        this.returnToMainController = returnToMainController;
+        this.returnToMainViewModel = returnToMainViewModel;
         recommendationViewModel.addPropertyChangeListener(this);
+        checkRecipeViewModel.addPropertyChangeListener(this);
+        returnToMainViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel(RecommendationViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -64,7 +79,7 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
             @Override
             public void actionPerformed(ActionEvent evt) {
                 if (evt.getSource().equals(cancel)) {
-                    recommendationController.execute();
+                    returnToMainController.execute();
                 }
             }
         });
