@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class FavouriteRecipesView extends JPanel implements ActionListener, PropertyChangeListener {
 
-    public final String viewName = "sign up";
+    public final String viewName = "favourite recipes";
 
     private final LoadRecipesViewModel loadRecipesViewModel;
     private final ReturnToMainViewModel returnToMainViewModel;
@@ -100,7 +100,6 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
             });
         }
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
         this.add(title);
         this.add(buttons);
     }
@@ -109,9 +108,7 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
     /**
      * React to a button click that results in evt.
      */
-    public void actionPerformed(ActionEvent evt) {
-        JOptionPane.showConfirmDialog(this, "Cancel not implemented yet.");
-    }
+    public void actionPerformed(ActionEvent evt) {}
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {

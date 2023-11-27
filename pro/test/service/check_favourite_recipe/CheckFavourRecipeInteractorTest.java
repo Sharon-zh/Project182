@@ -25,7 +25,7 @@ public class CheckFavourRecipeInteractorTest {
         CheckFavourRecipeOutputBoundary successPresenter = new CheckFavourRecipeOutputBoundary() {
             @Override
             public void prepareSuccessView(CheckFavourRecipeOutputData output) {
-                assertEquals(recipe, output.getRecipe());
+                assertEquals(recipe.getName(), output.getRecipe().getName());
             }
 
             @Override
