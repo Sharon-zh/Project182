@@ -2,6 +2,7 @@ package entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 class CommonUser implements User {
 
@@ -36,5 +37,11 @@ class CommonUser implements User {
     }
     public ArrayList<String> getFavoriteRecipes(){return favoriteRecipes;}
     public void setFavoriteRecipes(String recipeName){this.favoriteRecipes.add(recipeName);}
+    public void setFavoriteRecipeList(ArrayList<String> recipeList){this.favoriteRecipes.addAll(recipeList);}
+
+    @Override
+    public void removeFavoriteRecipes(String recipeName) {
+        this.favoriteRecipes.remove(recipeName);
+    }
 
 }

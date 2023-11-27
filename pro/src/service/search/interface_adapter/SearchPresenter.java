@@ -1,33 +1,30 @@
 package service.search.interface_adapter;
 
 import interface_adapter.ViewManagerModel;
-import service.after_search.interface_adapter.AfterSearchState;
-import service.after_search.interface_adapter.AfterSearchViewModel;
+import service.check_recipe.interface_adapter.CheckRecipeViewModel;
 import service.search.use_case.SearchOutputBoundary;
 import service.search.use_case.SearchOutputData;
 
 public class SearchPresenter implements SearchOutputBoundary {
 
     private final SearchViewModel searchViewModel;
-    private final AfterSearchViewModel afterSearchViewModel;
-    private ViewManagerModel viewManagerModel;
+    private final CheckRecipeViewModel checkRecipeViewModel;
+    private final ViewManagerModel viewManagerModel;
 
-    public SearchPresenter(ViewManagerModel viewManagerModel,
-                           AfterSearchViewModel afterSearchViewModel,
-                           SearchViewModel searchViewModel) {
+    public SearchPresenter(ViewManagerModel viewManagerModel, SearchViewModel searchViewModel,
+                           CheckRecipeViewModel checkRecipeViewModel) {
         this.viewManagerModel = viewManagerModel;
-        this.afterSearchViewModel = afterSearchViewModel;
         this.searchViewModel = searchViewModel;
+        this.checkRecipeViewModel = checkRecipeViewModel;
     }
 
     @Override
     public void prepareSuccessView(SearchOutputData result) {
-        AfterSearchState afterSearchState = afterSearchViewModel.getState();
-        afterSearchState.setSearchResult(result.getSearchResult());
-        this.afterSearchViewModel.setState(afterSearchState);
-        afterSearchViewModel.firePropertyChanged();
+        SearchState searchState = searchViewModel.getState();
+        searchState.setSearchResult(result.getSearchResult());
+        searchViewModel.firePropertyChanged();
 
-        this.viewManagerModel.setActiveView(afterSearchViewModel.getViewName());
+        this.viewManagerModel.setActiveView(checkRecipeViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
 

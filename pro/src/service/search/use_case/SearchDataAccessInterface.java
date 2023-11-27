@@ -1,9 +1,10 @@
 package service.search.use_case;
 
-import java.io.IOException;
+import entity.Recipe;
+
 import java.util.Map;
 
 public interface SearchDataAccessInterface {
-    Map searchResult(String searchWord);
-    boolean hasResult(Map result);
+    Map<String, Recipe> searchResult(String searchWord);
+    boolean hasResult(Map<String, Recipe> result);
 }

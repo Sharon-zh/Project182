@@ -1,18 +1,22 @@
 package service.save_favourite_recipe;
 
 import data_access.InMemoryUserDataAccessObject;
+import entity.*;
 import org.junit.Test;
 import service.save_favourite_recipe.use_case.*;
+import java.time.LocalDateTime;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SaveRecipeInteractorTest {
-    // need to add a user.
 
     @Test
     public void successTest() {
-        SaveRecipeInputData inputData = new SaveRecipeInputData("Lisa", "Fish Stew with Rouille");
         InMemoryUserDataAccessObject userRepository = new InMemoryUserDataAccessObject();
+        UserFactory userFactory= new CommonUserFactory();
+        User user = userFactory.create("Lisa", "password", LocalDateTime.now());
+        userRepository.save(user);
+        SaveRecipeInputData inputData = new SaveRecipeInputData("Lisa", "Fish Stew with Rouille");
 
         SaveRecipeOutputBoundary successPresenter = new SaveRecipeOutputBoundary() {
             @Override
