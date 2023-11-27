@@ -1,10 +1,12 @@
 package service.search.interface_adapter;
 
+import entity.Recipe;
+
 import java.util.Map;
 
 public class SearchState {
     private String searchWord = "";
-    private Map result = null;
+    private Map<String, Recipe> result;
     private String noResultError = "";
 
     public SearchState (SearchState copy) {
@@ -21,7 +23,9 @@ public class SearchState {
         this.searchWord = searchWord;
     }
 
-    public Map getResult() {return result;}
+    public Map<String, Recipe> getSearchResult() {return result;}
+    public void setSearchResult(Map<String, Recipe> result) {this.result = result;}
+
     public void setNoResultError(String noResultError) {
         this.noResultError = noResultError;}
 }

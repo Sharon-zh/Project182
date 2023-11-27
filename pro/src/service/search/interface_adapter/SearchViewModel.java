@@ -8,7 +8,7 @@ import java.beans.PropertyChangeSupport;
 public class SearchViewModel extends ViewModel {
 
     private SearchState state = new SearchState();
-    public SearchViewModel() {super("main");}
+    public SearchViewModel() {super("search result");}
     public void setState(SearchState state) {this.state = state;}
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

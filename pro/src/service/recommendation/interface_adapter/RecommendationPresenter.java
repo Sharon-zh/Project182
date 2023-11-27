@@ -1,13 +1,22 @@
 package service.recommendation.interface_adapter;
 
+import interface_adapter.ViewManagerModel;
+import service.check_recipe.interface_adapter.CheckRecipeViewModel;
 import service.recommendation.use_case.RecommendationOutputBoundary;
 import service.recommendation.use_case.RecommendationOutputData;
 
 public class RecommendationPresenter implements RecommendationOutputBoundary {
     private final RecommendationViewModel recommendationViewModel;
+    private final CheckRecipeViewModel checkRecipeViewModel;
+    private final ViewManagerModel viewManagerModel;
 
-    public RecommendationPresenter(RecommendationViewModel recommendationViewModel) {
+
+    public RecommendationPresenter(RecommendationViewModel recommendationViewModel,
+                                   CheckRecipeViewModel checkRecipeViewModel,
+                                   ViewManagerModel viewManagerModel) {
         this.recommendationViewModel = recommendationViewModel;
+        this.checkRecipeViewModel = checkRecipeViewModel;
+        this.viewManagerModel = viewManagerModel;
     }
 
     @Override
@@ -16,5 +25,8 @@ public class RecommendationPresenter implements RecommendationOutputBoundary {
         recommendationState.set(response.randomResult());
         this.recommendationViewModel.setState(recommendationState);
         this.recommendationViewModel.firePropertyChanged();
+
+        this.viewManagerModel.setActiveView(checkRecipeViewModel.getViewName());
+        this.viewManagerModel.firePropertyChanged();
     }
 }

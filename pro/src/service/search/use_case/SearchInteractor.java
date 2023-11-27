@@ -1,5 +1,7 @@
 package service.search.use_case;
 
+import entity.Recipe;
+
 import java.util.Map;
 
 public class SearchInteractor implements SearchInputBoundary{
@@ -15,7 +17,7 @@ public class SearchInteractor implements SearchInputBoundary{
     @Override
     public void execute(SearchInputData searchInputData) {
         String searchWord = searchInputData.getSearchWord();
-        Map result= this.userDataAccessObject.searchResult(searchWord);
+        Map<String, Recipe> result= this.userDataAccessObject.searchResult(searchWord);
         if (userDataAccessObject.hasResult(result)) {
             SearchOutputData searchOutputData = new SearchOutputData(result, true);
             searchPresenter.prepareSuccessView(searchOutputData);
@@ -23,9 +25,5 @@ public class SearchInteractor implements SearchInputBoundary{
         else {
             searchPresenter.prepareFailView("No results found");
         }
-//        String searchWord = searchInputData.getSearchWord();
-//        Map result= this.userDataAccessObject.searchResult(searchWord);
-//        SearchOutputData searchOutputData = new SearchOutputData(result);
-//        searchPresenter.prepareFailView();
     }
 }
