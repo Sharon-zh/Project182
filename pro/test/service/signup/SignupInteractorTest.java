@@ -5,14 +5,13 @@ import entity.User;
 import entity.UserFactory;
 import org.junit.jupiter.api.Test;
 import service.signup.use_case.*;
-import service.signup.interface_adapter.*;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SignupInteractorTest {
     @Test
-    void successTest() {
+    void successSignupTest() {
         SignupInputData inputData = new SignupInputData("Paul", "password", "password");
         SignupUserDataAccessInterface userRepository = new InMemoryUserDataAccessObject();
 

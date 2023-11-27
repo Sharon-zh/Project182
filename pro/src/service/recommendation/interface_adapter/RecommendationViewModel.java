@@ -12,6 +12,7 @@ public class RecommendationViewModel extends ViewModel {
     public static final String REFRESH_BUTTON_LABEL = "Refresh";
 
     public static final String CANCEL_BUTTON_LABEL = "Cancel";
+    public static final String RECOMMEND_BUTTON_LABEL = "Recommend";
 
     private RecommendationState state = new RecommendationState();
 

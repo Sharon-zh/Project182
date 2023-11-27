@@ -20,6 +20,7 @@ public class LogoutPresenter implements LogoutOutputBoundary {
     public void prepareSuccessView(LogoutOutputData logoutOutputData) {
         LoginState loginState = loginViewModel.getState();
         loginState.setUsername(logoutOutputData.getUsername());
+        loginViewModel.setState(loginState);
         loginViewModel.firePropertyChanged();
 
         viewManagerModel.setActiveView(loginViewModel.getViewName());

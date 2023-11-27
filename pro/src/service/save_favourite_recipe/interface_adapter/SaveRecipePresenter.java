@@ -17,6 +17,7 @@ public class SaveRecipePresenter implements SaveRecipeOutputBoundary {
         SaveRecipeState saveRecipeState = saveRecipeViewModel.getState();
         String successMessage = "Save " + saveRecipeOutputData.getRecipeName() + " successfully!";
         saveRecipeState.setSuccessMessage(successMessage);
+        saveRecipeViewModel.setState(saveRecipeState);
         saveRecipeViewModel.firePropertyChanged();
     }
 }

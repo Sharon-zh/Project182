@@ -20,6 +20,7 @@ public class CheckRecipePresenter implements CheckRecipeOutputBoundary {
     public void prepareSuccessView(CheckRecipeOutputData checkRecipeOutputData) {
         CheckRecipeState checkRecipeState = checkRecipeViewModel.getState();
         checkRecipeState.setRecipe(checkRecipeOutputData.getRecipe());
+        checkRecipeViewModel.setState(checkRecipeState);
         checkRecipeViewModel.firePropertyChanged();
 
         viewManagerModel.setActiveView(checkRecipeViewModel.getViewName());
