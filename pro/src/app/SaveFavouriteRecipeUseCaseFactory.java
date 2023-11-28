@@ -8,6 +8,7 @@ import service.save_favourite_recipe.use_case.SaveRecipeDataAccessInterface;
 import service.save_favourite_recipe.use_case.SaveRecipeInputBoundary;
 import service.save_favourite_recipe.use_case.SaveRecipeInteractor;
 import service.save_favourite_recipe.use_case.SaveRecipeOutputBoundary;
+import view.RecipeView;
 
 import javax.swing.*;
 import java.io.IOException;

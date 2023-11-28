@@ -2,7 +2,8 @@ package data_access;
 
 import entity.Recipe;
 import entity.RecipeFactory;
-import entity.User;
+import entity.RecommendedRecipes;
+import entity.RecommendedRecipesService;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -14,7 +15,6 @@ import service.recommendation.use_case.RecommendationDataAccessInterface;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class RandomRecipeDataAccessObject implements RecommendationDataAccessInterface {
     private final RecipeFactory recipeFactory;
@@ -74,23 +74,22 @@ public class RandomRecipeDataAccessObject implements RecommendationDataAccessInt
 
 
     @Override
-    public Map<String, Recipe> randomResult() {
+    public RecommendedRecipes randomResult() {
         JSONObject recipeJson = this.random();
         Recipe recipe = this.convertIntoRecipe(recipeJson);
-        String name = recipe.getName();
-        Map<String, Recipe> recipeMap = new HashMap<>();
-        recipeMap.put(name, recipe);
+        ArrayList<Recipe> recipeList = new ArrayList<>();
+        recipeList.add(recipe);
 
-        while (recipeMap.keySet().size() < 10) {
+        while (recipeList.size() < 10) {
             JSONObject recipeJsonNew = this.random();
             Recipe recipeNew = this.convertIntoRecipe(recipeJsonNew);
-            String nameNew = recipe.getName();
-            if (recipeMap.keySet().stream().toList().contains(nameNew)) {
+            if (recipeList.contains(recipeNew)) {
                 break;
             } else {
-                recipeMap.put(nameNew, recipeNew);
+                recipeList.add(recipeNew);
             }
         }
-        return recipeMap;
+
+        return new RecommendedRecipesService(recipeList);
     }
 }

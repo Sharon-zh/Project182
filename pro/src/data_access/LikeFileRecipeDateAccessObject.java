@@ -29,10 +29,10 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
 
                 String row;
                 while ((row = reader.readLine()) != null) {
-                    String[] col = row.split(",");
+                    String[] col = row.split(",\\s*");
                     String recipe = String.valueOf(col[headers.get("recipe")]);
                     String likeUsername = String.valueOf(col[headers.get("like")]);
-                    String[] splitArray = likeUsername.split(",\\s*"); // Split the string by comma and optional space
+                    String[] splitArray = likeUsername.split(","); // Split the string by comma and optional space
                     List<String> likeList = Arrays.asList(splitArray); // Convert array to List
                     like.put(recipe, likeList);
                 }
@@ -44,12 +44,12 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
         BufferedWriter writer;
         try {
             writer = new BufferedWriter(new FileWriter(csvFile));
-            writer.write(String.join(",", headers.keySet()));
+            writer.write(String.join(", ", headers.keySet()));
             writer.newLine();
 
             for (List<String> likeList : like.values()) {
-                String likeUsername = String.join(", ", likeList);
-                String line = String.format("%s,%s",
+                String likeUsername = String.join(",", likeList);
+                String line = String.format("%s, %s",
                         getKeyFromValue(like, likeList), likeUsername);
                 writer.write(line);
                 writer.newLine();
