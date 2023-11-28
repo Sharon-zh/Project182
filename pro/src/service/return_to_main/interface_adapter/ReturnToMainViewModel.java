@@ -8,7 +8,7 @@ import java.beans.PropertyChangeSupport;
 public class ReturnToMainViewModel extends ViewModel {
     private ReturnToMainState state = new ReturnToMainState();
     public ReturnToMainViewModel() {
-        super("cancel");
+        super("recipe");
     }
     public void setState(ReturnToMainState state) {
         this.state = state;
