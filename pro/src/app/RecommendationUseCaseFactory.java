@@ -34,7 +34,7 @@ public class RecommendationUseCaseFactory {
         return null;
     }
 
-    private static RecommendationController createUserRecommendationUseCase(ViewManagerModel viewManagerModel, CheckRecipeViewModel checkRecipeViewModel, RecommendationViewModel recommendationViewModel, RecommendationDataAccessInterface recommendationDataAccessInterface) throws IOException {
+    public static RecommendationController createUserRecommendationUseCase(ViewManagerModel viewManagerModel, CheckRecipeViewModel checkRecipeViewModel, RecommendationViewModel recommendationViewModel, RecommendationDataAccessInterface recommendationDataAccessInterface) throws IOException {
         RecommendationPresenter recommendationPresenter = new RecommendationPresenter(recommendationViewModel, checkRecipeViewModel, viewManagerModel);
         RecommendationInteractor recommendationInteractor = new RecommendationInteractor(recommendationDataAccessInterface, recommendationPresenter);
         RecommendationController recommendationController = new RecommendationController(recommendationInteractor);
