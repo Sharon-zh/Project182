@@ -3,6 +3,7 @@ package data_access;
 import entity.User;
 import entity.UserFactory;
 import service.load_favourite_recipes.use_case.LoadRecipesDataAccessInterface;
+import service.login.use_case.LoginUserDataAccessInterface;
 import service.remove_favourite_recipe.use_case.RemoveRecipeDataAccessInterface;
 import service.save_favourite_recipe.use_case.SaveRecipeDataAccessInterface;
 import service.signup.use_case.SignupUserDataAccessInterface;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, RemoveRecipeDataAccessInterface,
-        LoadRecipesDataAccessInterface, SignupUserDataAccessInterface {
+        LoadRecipesDataAccessInterface, SignupUserDataAccessInterface, LoginUserDataAccessInterface {
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -66,6 +67,11 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
     public void save(User user) {
         accounts.put(user.getName(), user);
         this.save();
+    }
+
+    @Override
+    public User get(String username) {
+        return accounts.get(username);
     }
 
     private void save() {
