@@ -9,6 +9,6 @@ public class ReturnToMainInteractor implements ReturnToMainInputBoundary{
 
     @Override
     public void execute() {
-
+        returnToMainPresenter.prepareSuccessView();
     }
 }
