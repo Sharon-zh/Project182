@@ -1,20 +1,22 @@
 package service.recommendation.interface_adapter;
 
 import entity.Recipe;
+import entity.RecommendedRecipes;
+import entity.RecommendedRecipesService;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class RecommendationState {
-    private Map<String, Recipe> random = new HashMap<>();
+    private RecommendedRecipes random;
 
     public RecommendationState(){}
 
-    public Map<String, Recipe> get(){
+    public RecommendedRecipes get(){
         return random;
     }
 
-    public void set(Map<String, Recipe> random) {
+    public void set(RecommendedRecipes random) {
         this.random = random;
     }
 }

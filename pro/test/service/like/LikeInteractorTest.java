@@ -23,7 +23,7 @@ public class LikeInteractorTest {
         User user = userFactory.create("Lisa", "password", LocalDateTime.now());
         userRepository.save(user);
 
-        LikeFileRecipeDateAccessObject fileRepository = new LikeFileRecipeDateAccessObject("xxxx");
+        LikeFileRecipeDateAccessObject fileRepository = new LikeFileRecipeDateAccessObject("like_num.csv");
         fileRepository.like("Fish Stew with Rouille", "Lisa");
 
         LikeInputData inputData = new LikeInputData("Fish Stew with Rouille", "Lisa");

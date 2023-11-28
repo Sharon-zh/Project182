@@ -1,6 +1,7 @@
 package service.recommendation.use_case;
 
 import entity.Recipe;
+import entity.RecommendedRecipes;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -16,7 +17,7 @@ public class RecommendationInteractor implements RecommendationInputBoundary{
 
     @Override
     public void execute() {
-        Map<String, Recipe> random = userDataAccessObject.randomResult();
+        RecommendedRecipes random = userDataAccessObject.randomResult();
         RecommendationOutputData recommendationOutputData = new RecommendationOutputData(random);
         recommendationPresenter.prepareSuccessView(recommendationOutputData);
     }

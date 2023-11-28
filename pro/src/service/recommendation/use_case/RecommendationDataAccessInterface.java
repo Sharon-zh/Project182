@@ -1,9 +1,7 @@
 package service.recommendation.use_case;
 
-import entity.Recipe;
-
-import java.util.Map;
+import entity.RecommendedRecipes;
 
 public interface RecommendationDataAccessInterface {
-    Map<String, Recipe> randomResult();
+    RecommendedRecipes randomResult();
 }
