@@ -5,19 +5,22 @@ import service.logged_in.interface_adapter.LoggedInState;
 import service.logged_in.interface_adapter.LoggedInViewModel;
 import service.login.use_case.LoginOutputBoundary;
 import service.login.use_case.LoginOutputData;
+import service.logout.interface_adapter.LogoutViewModel;
 
 public class LoginPresenter implements LoginOutputBoundary {
 
     private final LoginViewModel loginViewModel;
     private final LoggedInViewModel loggedInViewModel;
+    private final LogoutViewModel logoutViewModel;
     private ViewManagerModel viewManagerModel;
 
     public LoginPresenter(ViewManagerModel viewManagerModel,
                           LoggedInViewModel loggedInViewModel,
-                          LoginViewModel loginViewModel) {
+                          LoginViewModel loginViewModel,LogoutViewModel logoutViewModel) {
         this.viewManagerModel = viewManagerModel;
         this.loggedInViewModel = loggedInViewModel;
         this.loginViewModel = loginViewModel;
+        this.logoutViewModel = logoutViewModel;
     }
 
     @Override
@@ -28,7 +31,7 @@ public class LoginPresenter implements LoginOutputBoundary {
         this.loggedInViewModel.setState(loggedInState);
         this.loggedInViewModel.firePropertyChanged();
 
-        this.viewManagerModel.setActiveView(loggedInViewModel.getViewName());
+        this.viewManagerModel.setActiveView(logoutViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
 

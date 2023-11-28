@@ -25,7 +25,7 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
                 String header = reader.readLine();
 
                 // For later: clean this up by creating a new Exception subclass and handling it in the UI.
-                assert header.equals("recipe,like");
+                assert header.equals("recipe, like");
 
                 String row;
                 while ((row = reader.readLine()) != null) {
