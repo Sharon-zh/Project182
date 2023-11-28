@@ -1,6 +1,5 @@
 package service.search;
 
-import app.SearchUseCaseFactory;
 import data_access.ApiRecipeDataAccessObject;
 import data_access.InMemoryUserDataAccessObject;
 import data_access.InmemoryRecipeDataAccessObject;

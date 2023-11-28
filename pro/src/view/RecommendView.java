@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
@@ -52,16 +53,15 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
         buttons.add(refresh);
         cancel = new JButton(RecommendationViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
-        Set<String> recipe_name = recommendationViewModel.getState().get().keySet();
-        Map<String, Recipe> recipe_map = recommendationViewModel.getState().get();
-        for (String buttonName: recipe_name){
-            JButton recipeButton = new JButton(buttonName);
+        ArrayList<Recipe> recipeList = recommendationViewModel.getState().get().getRecommendedRecipes();
+        for (Recipe everyRecipe: recipeList){
+            JButton recipeButton = new JButton(everyRecipe.getName());
             buttons.add(recipeButton);
             recipeButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent evt) {
                     if (evt.getSource().equals(recipeButton)) {
-                        checkRecipeController.execute(recipe_map.get(buttonName));
+                        checkRecipeController.execute(everyRecipe);
                     }
                 }
             });
