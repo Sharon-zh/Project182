@@ -1,7 +1,7 @@
 package service.check_favourite_recipe;
 
 import data_access.ApiRecipeDataAccessObject;
-import data_access.InmemoryRecipeDataAccessObject;
+import data_access.InMemoryRecipeDataAccessObject;
 import data_access.LikeFileRecipeDateAccessObject;
 import entity.CommonRecipeFactory;
 import entity.Recipe;
@@ -19,7 +19,7 @@ public class CheckFavourRecipeInteractorTest {
         CheckFavourRecipeInputData inputData = new CheckFavourRecipeInputData("Beetroot Soup");
         RecipeFactory recipeFactory = new CommonRecipeFactory();
         CheckFavourRecipeDataAccessInterface userRepository = new ApiRecipeDataAccessObject(recipeFactory,
-                new InmemoryRecipeDataAccessObject(), new LikeFileRecipeDateAccessObject("xxxx"));
+                new InMemoryRecipeDataAccessObject(), new LikeFileRecipeDateAccessObject("xxxx"));
         Map<String, Recipe> recipes = userRepository.searchResult("Beetroot Soup");
         Recipe recipe = recipes.get(recipes.keySet().toArray()[0]);
         CheckFavourRecipeOutputBoundary successPresenter = new CheckFavourRecipeOutputBoundary() {
@@ -45,7 +45,7 @@ public class CheckFavourRecipeInteractorTest {
         CheckFavourRecipeInputData inputData = new CheckFavourRecipeInputData("non-existing recipe");
         RecipeFactory recipeFactory = new CommonRecipeFactory();
         CheckFavourRecipeDataAccessInterface userRepository = new ApiRecipeDataAccessObject(recipeFactory,
-                    new InmemoryRecipeDataAccessObject(), new LikeFileRecipeDateAccessObject("xxxx"));
+                    new InMemoryRecipeDataAccessObject(), new LikeFileRecipeDateAccessObject("xxxx"));
         CheckFavourRecipeOutputBoundary failurePresenter = new CheckFavourRecipeOutputBoundary() {
             @Override
             public void prepareSuccessView(CheckFavourRecipeOutputData user) {

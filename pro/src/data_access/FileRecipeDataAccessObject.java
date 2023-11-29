@@ -30,7 +30,7 @@ public class FileRecipeDataAccessObject implements CommentDataAccessInterface {
                 String header = reader.readLine();
 
                 // For later: clean this up by creating a new Exception subclass and handling it in the UI.
-                assert header.equals("recipename,username,comment");
+                assert header.equals("recipename,comment");
 
                 String row;
                 while ((row = reader.readLine()) != null) {
