@@ -7,7 +7,7 @@ import java.util.Map;
 public class SearchState {
     private String searchWord = "";
     private Map<String, Recipe> result;
-    private String noResultError = "";
+    private String noResultError = null;
 
     public SearchState (SearchState copy) {
         searchWord = copy.searchWord;
