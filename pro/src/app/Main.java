@@ -84,7 +84,9 @@ public class Main {
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, userDataAccessObject);
         views.add(signupView, signupView.viewName);
         LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject, logoutViewModel);
-//        views.add(loginView, loginView.viewName);
+
+        views.add(loginView, loginView.viewName);
+
         SearchView searchView = LoadRecipesUseCaseFactory.create(viewManagerModel, searchViewModel, checkRecipeViewModel, apiRecipeDataAccessObject, logoutViewModel, recommendationViewModel, loadRecipesViewModel, loggedInViewModel, userDataAccessObject, randomRecipeDataAccessObject, loginViewModel);
         views.add(searchView, searchView.viewName);
         SearchResultView searchResultView = SearchUseCaseFactory.create(searchViewModel, checkRecipeViewModel, returnToMainViewModel, viewManagerModel, loggedInViewModel, apiRecipeDataAccessObject);
@@ -97,7 +99,7 @@ public class Main {
 
 
         // Set the beginning View(should change to log in)
-        viewManagerModel.setActiveView(signupView.viewName);
+        viewManagerModel.setActiveView(searchView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
