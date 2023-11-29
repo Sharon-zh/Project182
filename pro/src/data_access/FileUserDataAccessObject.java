@@ -28,7 +28,7 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
         headers.put("username", 0);
         headers.put("password", 1);
         headers.put("creation_time", 2);
-        headers.put("favourite_recipe", 3);
+        headers.put("favourite_recipes", 3);
 
 
         if (csvFile.length() == 0) {
@@ -38,7 +38,7 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
             try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
                 String header = reader.readLine();
 
-                assert header.equals("username,password,creation_time,favourite_recipe");
+                assert header.equals("username, password, creation_time, favourite_recipes");
 
                 String row;
                 while ((row = reader.readLine()) != null) {
@@ -46,7 +46,7 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
                     String username = String.valueOf(col[headers.get("username")]);
                     String password = String.valueOf(col[headers.get("password")]);
                     String creationTimeText = String.valueOf(col[headers.get("creation_time")]);
-                    String recipeNames = String.valueOf(col[headers.get("favourite_recipe")]);
+                    String recipeNames = String.valueOf(col[headers.get("favourite_recipes")]);
                     String[] splitArray = recipeNames.split(",");
                     ArrayList<String> favouriteRecipeList = new ArrayList<String>(Arrays.asList(splitArray));
                     LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
@@ -82,13 +82,12 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
             writer.newLine();
 
             for (User user : accounts.values()) {
-                String favouriteRecipes = user.getFavoriteRecipes().toString();
-                favouriteRecipes
-                        = favouriteRecipes.replace("[", "")
+                String favouriteRecipes
+                        = user.getFavoriteRecipes().toString().replace("[", "")
                         .replace("]", "")
                         .replace(" ", "");
                 String line = String.format("%s, %s, %s, %s",
-                        user.getName(), user.getPassword(), user.getCreationTime(), favouriteRecipes);
+                        user.getName(), user.getPassword(), user.getCreationTime(), "FR:" + favouriteRecipes);
                 writer.write(line);
                 writer.newLine();
             }
