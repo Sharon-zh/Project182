@@ -1,6 +1,6 @@
 package service.Recommendation;
 
-import data_access.InmemoryRecipeDataAccessObject;
+import data_access.InMemoryRecipeDataAccessObject;
 import data_access.LikeFileRecipeDateAccessObject;
 import data_access.RandomRecipeDataAccessObject;
 import entity.CommonRecipeFactory;
@@ -17,7 +17,7 @@ public class RecommendationInteractorTest {
     public void successTest() throws IOException {
         RecipeFactory recipeFactory = new CommonRecipeFactory();
         RecommendationDataAccessInterface userRepository = new RandomRecipeDataAccessObject(recipeFactory,
-                new InmemoryRecipeDataAccessObject(), new LikeFileRecipeDateAccessObject("xxxx"));
+                new InMemoryRecipeDataAccessObject(), new LikeFileRecipeDateAccessObject("xxxx"));
         RecommendationOutputBoundary successPresenter = new RecommendationOutputBoundary() {
             @Override
             public void prepareSuccessView(RecommendationOutputData output) {

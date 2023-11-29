@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InmemoryRecipeDataAccessObject implements CommentDataAccessInterface {
+public class InMemoryRecipeDataAccessObject implements CommentDataAccessInterface {
     private final Map<String, ArrayList<String>> comments = new HashMap<>();
 
     @Override
