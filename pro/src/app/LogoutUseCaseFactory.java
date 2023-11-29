@@ -13,7 +13,7 @@ import java.io.IOException;
 public class LogoutUseCaseFactory {
     private LogoutUseCaseFactory() {}
 
-    private static LogoutController createLogoutUseCase(
+    public static LogoutController createLogoutUseCase(
             ViewManagerModel viewManagerModel,
             LoginViewModel loginViewModel) throws IOException {
 

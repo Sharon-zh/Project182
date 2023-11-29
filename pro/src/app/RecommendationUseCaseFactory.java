@@ -25,17 +25,16 @@ public class RecommendationUseCaseFactory {
         try {
             CheckRecipeController checkRecipeController = CheckRecipeUseCaseFactory.createCheckRecipeUseCase(viewManagerModel, checkRecipeViewModel);
             ReturnToMainController returnToMainController = ReturnToMainUseCaseFactory.createReturnToMainUseCase(returnToMainViewModel, loggedInViewModel, viewManagerModel);
-            RecommendationController recommendationController = createUserRecommendationUseCase(viewManagerModel, checkRecipeViewModel, recommendationViewModel, recommendationDataAccessObject);
+            RecommendationController recommendationController = createUserRecommendationUseCase(viewManagerModel, recommendationViewModel, recommendationDataAccessObject);
             return new RecommendView(recommendationController, checkRecipeController, returnToMainController, recommendationViewModel, checkRecipeViewModel, returnToMainViewModel);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Could not open user data file.");
         }
-
         return null;
     }
 
-    public static RecommendationController createUserRecommendationUseCase(ViewManagerModel viewManagerModel, CheckRecipeViewModel checkRecipeViewModel, RecommendationViewModel recommendationViewModel, RecommendationDataAccessInterface recommendationDataAccessInterface) throws IOException {
-        RecommendationPresenter recommendationPresenter = new RecommendationPresenter(recommendationViewModel, checkRecipeViewModel, viewManagerModel);
+    public static RecommendationController createUserRecommendationUseCase(ViewManagerModel viewManagerModel, RecommendationViewModel recommendationViewModel, RecommendationDataAccessInterface recommendationDataAccessInterface) throws IOException {
+        RecommendationPresenter recommendationPresenter = new RecommendationPresenter(recommendationViewModel, viewManagerModel);
         RecommendationInteractor recommendationInteractor = new RecommendationInteractor(recommendationDataAccessInterface, recommendationPresenter);
         RecommendationController recommendationController = new RecommendationController(recommendationInteractor);
 
