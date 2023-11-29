@@ -20,7 +20,7 @@ public class FileUserDataAccessObjectTest {
         UserFactory uf = new CommonUserFactory();
         FileUserDataAccessObject fudao;
         try {
-            fudao = new FileUserDataAccessObject("/Users/ltz/IdeaProjects/Project182/user.csv", uf);
+            fudao = new FileUserDataAccessObject("user.csv", uf);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -29,7 +29,7 @@ public class FileUserDataAccessObjectTest {
     }
 
     private ArrayList<String> readLines() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("/Users/ltz/IdeaProjects/Project182/user.csv"));
+        BufferedReader reader = new BufferedReader(new FileReader("user.csv"));
         ArrayList<String> lines = new ArrayList<String>();
         reader.readLine();
         String line = reader.readLine();
@@ -44,12 +44,10 @@ public class FileUserDataAccessObjectTest {
         UserFactory uf = new CommonUserFactory();
         FileUserDataAccessObject fudao;
         try {
-            fudao = new FileUserDataAccessObject("/Users/ltz/IdeaProjects/Project182/user.csv", uf);
+            fudao = new FileUserDataAccessObject("user.csv", uf);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        ArrayList<String> lines = readLines();
         assertTrue(fudao.existsByName("user1"));
         assertTrue(fudao.existsByName("user2"));
     }
@@ -66,7 +64,7 @@ public class FileUserDataAccessObjectTest {
         UserFactory uf = new CommonUserFactory();
         FileUserDataAccessObject fudao;
         try {
-            fudao = new FileUserDataAccessObject("/Users/ltz/IdeaProjects/Project182/user.csv", uf);
+            fudao = new FileUserDataAccessObject("user.csv", uf);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -74,12 +72,10 @@ public class FileUserDataAccessObjectTest {
         fudao.saveRecipe("user2", "Blini Pancakes");
         fudao.saveRecipe("user1", "Chicken Marengo");
         fudao.saveRecipe("user2", "Broccoli & Stilton soup");
-        System.out.println(fudao.loadFavouriteRecipes("user1"));
-        System.out.println(fudao.loadFavouriteRecipes("user2"));
-        assertEquals("Strawberries Romanoff", fudao.loadFavouriteRecipes("user1").get(1));
-        assertEquals("Chicken Marengo", fudao.loadFavouriteRecipes("user1").get(2));
-        assertEquals("Blini Pancakes", fudao.loadFavouriteRecipes("user2").get(1));
-        assertEquals("Broccoli & Stilton soup", fudao.loadFavouriteRecipes("user2").get(2));
+        assertEquals("Strawberries Romanoff", fudao.loadFavouriteRecipes("user1").get(0));
+        assertEquals("Chicken Marengo", fudao.loadFavouriteRecipes("user1").get(1));
+        assertEquals("Blini Pancakes", fudao.loadFavouriteRecipes("user2").get(0));
+        assertEquals("Broccoli & Stilton soup", fudao.loadFavouriteRecipes("user2").get(1));
     }
 
     @Test
@@ -87,12 +83,12 @@ public class FileUserDataAccessObjectTest {
         UserFactory uf = new CommonUserFactory();
         FileUserDataAccessObject fudao;
         try {
-            fudao = new FileUserDataAccessObject("/Users/ltz/IdeaProjects/Project182/user.csv", uf);
+            fudao = new FileUserDataAccessObject("user.csv", uf);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         fudao.saveRecipe("user1", "Strawberries Romanoff");
-        assertEquals("Strawberries Romanoff", fudao.loadFavouriteRecipes("user1").get(1));
+        assertEquals("Strawberries Romanoff", fudao.loadFavouriteRecipes("user1").get(0));
         fudao.removeRecipe("user1", "Strawberries Romanoff");
         assertFalse(fudao.loadFavouriteRecipes("user1").contains("Strawberries Romanoff"));
     }
@@ -103,12 +99,12 @@ public class FileUserDataAccessObjectTest {
         UserFactory uf = new CommonUserFactory();
         FileUserDataAccessObject fudao;
         try {
-            fudao = new FileUserDataAccessObject("/Users/ltz/IdeaProjects/Project182/user.csv", uf);
+            fudao = new FileUserDataAccessObject("user.csv", uf);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         fudao.saveRecipe("user1", "Strawberries Romanoff");
-        assertEquals("Strawberries Romanoff", fudao.loadFavouriteRecipes("user1").get(1));
+        assertEquals("Strawberries Romanoff", fudao.loadFavouriteRecipes("user1").get(0));
     }
 
     @Test
@@ -116,7 +112,7 @@ public class FileUserDataAccessObjectTest {
         UserFactory uf = new CommonUserFactory();
         FileUserDataAccessObject fudao;
         try {
-            fudao = new FileUserDataAccessObject("/Users/ltz/IdeaProjects/Project182/user.csv", uf);
+            fudao = new FileUserDataAccessObject("user.csv", uf);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
