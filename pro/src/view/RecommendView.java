@@ -53,18 +53,20 @@ public class RecommendView extends JPanel implements ActionListener, PropertyCha
         buttons.add(refresh);
         cancel = new JButton(RecommendationViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
-        ArrayList<Recipe> recipeList = recommendationViewModel.getState().get().getRecommendedRecipes();
-        for (Recipe everyRecipe: recipeList){
-            JButton recipeButton = new JButton(everyRecipe.getName());
-            buttons.add(recipeButton);
-            recipeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent evt) {
-                    if (evt.getSource().equals(recipeButton)) {
-                        checkRecipeController.execute(everyRecipe);
+        if (recommendationViewModel.getState().get() != null){
+            ArrayList<Recipe> recipeList = recommendationViewModel.getState().get().getRecommendedRecipes();
+            for (Recipe everyRecipe: recipeList){
+                JButton recipeButton = new JButton(everyRecipe.getName());
+                buttons.add(recipeButton);
+                recipeButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(recipeButton)) {
+                            checkRecipeController.execute(everyRecipe);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
         refresh.addActionListener(new ActionListener() {
             @Override

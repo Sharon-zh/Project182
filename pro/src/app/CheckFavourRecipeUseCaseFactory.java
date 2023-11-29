@@ -13,6 +13,7 @@ import service.load_favourite_recipes.interface_adapter.LoadRecipesViewModel;
 import service.logged_in.interface_adapter.LoggedInViewModel;
 import service.remove_favourite_recipe.interface_adapter.RemoveRecipeController;
 import service.remove_favourite_recipe.interface_adapter.RemoveRecipeViewModel;
+import service.remove_favourite_recipe.use_case.RemoveRecipeDataAccessInterface;
 import service.return_to_main.interface_adapter.ReturnToMainController;
 import service.return_to_main.interface_adapter.ReturnToMainViewModel;
 import view.FavouriteRecipesView;
@@ -29,14 +30,15 @@ public class CheckFavourRecipeUseCaseFactory {
             LoadRecipesViewModel loadRecipesViewModel,
             ReturnToMainViewModel returnToMainViewModel,
             RemoveRecipeViewModel removeRecipeViewModel,
-            LoggedInViewModel loggedInViewModel) {
+            LoggedInViewModel loggedInViewModel,
+            RemoveRecipeDataAccessInterface removeRecipeDataAccessObject) {
 
         try {
             CheckFavourRecipeController checkFavourRecipeController = createCheckFavourRecipeUseCase(viewManagerModel,
                     checkFavourRecipeViewModel, checkFavourRecipeDataAccessObject);
             ReturnToMainController returnToMainController = ReturnToMainUseCaseFactory.createReturnToMainUseCase(
                     returnToMainViewModel, loggedInViewModel, viewManagerModel);
-            RemoveRecipeController removeRecipeController
+            RemoveRecipeController removeRecipeController = RemoveUseCaseFactory.createRemoveRecipeUseCase(removeRecipeViewModel, removeRecipeDataAccessObject);
             return new FavouriteRecipesView(loadRecipesViewModel, returnToMainViewModel, removeRecipeViewModel,
                     loggedInViewModel, checkFavourRecipeViewModel, returnToMainController,  removeRecipeController,
                     checkFavourRecipeController);

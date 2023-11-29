@@ -13,7 +13,7 @@ import java.io.IOException;
 public class RemoveUseCaseFactory {
     private RemoveUseCaseFactory() {}
 
-    private static RemoveRecipeController createRemoveRecipeUseCase(
+    public static RemoveRecipeController createRemoveRecipeUseCase(
             RemoveRecipeViewModel removeRecipeViewModel,
             RemoveRecipeDataAccessInterface userDataAccessObject) throws IOException {
 

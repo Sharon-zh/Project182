@@ -7,15 +7,12 @@ import service.recommendation.use_case.RecommendationOutputData;
 
 public class RecommendationPresenter implements RecommendationOutputBoundary {
     private final RecommendationViewModel recommendationViewModel;
-    private final CheckRecipeViewModel checkRecipeViewModel;
     private final ViewManagerModel viewManagerModel;
 
 
     public RecommendationPresenter(RecommendationViewModel recommendationViewModel,
-                                   CheckRecipeViewModel checkRecipeViewModel,
                                    ViewManagerModel viewManagerModel) {
         this.recommendationViewModel = recommendationViewModel;
-        this.checkRecipeViewModel = checkRecipeViewModel;
         this.viewManagerModel = viewManagerModel;
     }
 
@@ -26,7 +23,7 @@ public class RecommendationPresenter implements RecommendationOutputBoundary {
         this.recommendationViewModel.setState(recommendationState);
         this.recommendationViewModel.firePropertyChanged();
 
-        this.viewManagerModel.setActiveView(checkRecipeViewModel.getViewName());
+        this.viewManagerModel.setActiveView(recommendationViewModel.getViewName());
         this.viewManagerModel.firePropertyChanged();
     }
 }
