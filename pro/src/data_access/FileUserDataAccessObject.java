@@ -101,7 +101,9 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
 
     @Override
     public ArrayList<String> loadFavouriteRecipes(String userName) {
-        return accounts.get(userName).getFavoriteRecipes();
+        ArrayList<String> recipes = accounts.get(userName).getFavoriteRecipes();
+        recipes.remove(0);
+        return recipes;
     }
 
     @Override
