@@ -33,5 +33,13 @@ public class LikeRecipeDataAccessObjectTest {
         ArrayList<String> lines2 = readLines();
         assertFalse(lines2.get(0).contains("zth"));
         assertEquals(0, likeFileRecipeDateAccessObject.get("Spicy Arrabiata Penne"));
+        likeFileRecipeDateAccessObject.like("Beef Asado", "zlt");
+        assertEquals(1, likeFileRecipeDateAccessObject.get("Beef Asado"));
+    }
+
+    @Test
+    public void get() throws IOException {
+        LikeFileRecipeDateAccessObject likeFileRecipeDateAccessObject = new LikeFileRecipeDateAccessObject("./like_num.csv");
+        assertEquals(0, likeFileRecipeDateAccessObject.get("abc"));
     }
 }
