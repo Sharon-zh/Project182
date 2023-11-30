@@ -7,7 +7,7 @@ public class LikeOutputData {
         this.like = like;
     }
 
-    public Integer get(){
+    public int get(){
         return like;
     }
 }

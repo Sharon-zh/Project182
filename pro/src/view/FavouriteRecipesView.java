@@ -3,14 +3,13 @@ package view;
 import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeController;
 import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeState;
 import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeViewModel;
-import service.load_favourite_recipes.interface_adapter.LoadRecipesController;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesViewModel;
 import service.logged_in.interface_adapter.LoggedInViewModel;
 import service.remove_favourite_recipe.interface_adapter.RemoveRecipeController;
 import service.remove_favourite_recipe.interface_adapter.RemoveRecipeViewModel;
 import service.return_to_main.interface_adapter.ReturnToMainController;
 import service.return_to_main.interface_adapter.ReturnToMainViewModel;
-
+import service.search.interface_adapter.SearchViewModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -18,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+
 
 public class FavouriteRecipesView extends JPanel implements ActionListener, PropertyChangeListener {
 
@@ -31,9 +31,9 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
     private final ReturnToMainController returnToMainController;
     private final RemoveRecipeController removeRecipeController;
     private final CheckFavourRecipeController checkFavourRecipeController;
+    private JButton cancel;
+    private final JPanel buttons;
 
-
-    private final JButton cancel;
 
     public FavouriteRecipesView(LoadRecipesViewModel loadRecipesViewModel, ReturnToMainViewModel returnToMainViewModel,
                                 RemoveRecipeViewModel removeRecipeViewModel, LoggedInViewModel loggedInViewModel,
@@ -49,7 +49,7 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
         this.returnToMainController = returnToMainController;
         this.removeRecipeController = removeRecipeController;
         this.checkFavourRecipeController = checkFavourRecipeController;
-
+        this.buttons = new JPanel();
         this.removeRecipeViewModel.addPropertyChangeListener(this);
         this.returnToMainViewModel.addPropertyChangeListener(this);
         this.checkFavourRecipeViewModel.addPropertyChangeListener(this);
@@ -58,21 +58,6 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
 
         JLabel title = new JLabel(RemoveRecipeViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-
-        JPanel buttons = new JPanel();
-        cancel = new JButton(RemoveRecipeViewModel.CANCEL_BUTTON_LABEL);
-        buttons.add(cancel);
-
-        cancel.addActionListener(
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(cancel)) {
-                            returnToMainController.execute();
-                        }
-                    }
-                }
-        );
 
         ArrayList<String> recipeNames = loadRecipesViewModel.getState().getFavouriteRecipes();
         for (String recipeName: recipeNames){
@@ -116,6 +101,47 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
             CheckFavourRecipeState state = (CheckFavourRecipeState) evt.getNewValue();
             if (state.getNoResultError() != null) {
                 JOptionPane.showMessageDialog(this, state.getNoResultError());
+            } else if (state.getRecipe() != null) {
+                buttons.removeAll();
+                ArrayList<String> recipeNames = loadRecipesViewModel.getState().getFavouriteRecipes();
+                for (String recipeName: recipeNames){
+                    JButton recipeButton = new JButton(recipeName);
+                    buttons.add(recipeButton);
+                    recipeButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent evt) {
+                            if (evt.getSource().equals(recipeButton)) {
+                                checkFavourRecipeController.execute(recipeName);
+                            }
+                        }
+                    });
+
+                    JButton removeRecipeButton = new JButton("remove " + recipeName);
+                    buttons.add(removeRecipeButton);
+                    removeRecipeButton.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent evt) {
+                            if (evt.getSource().equals(removeRecipeButton)) {
+                                String userName = loggedInViewModel.getState().getUsername();
+                                removeRecipeController.execute(userName, recipeName);
+                            }
+                        }
+                    });
+                }
+
+                cancel = new JButton(SearchViewModel.CANCEL_BUTTON_LABEL);
+                buttons.add(cancel);
+                cancel.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(cancel)) {
+                            returnToMainController.execute();
+                        }
+                    }
+                });
+
+                this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+                this.add(buttons);
             }
         }
     }

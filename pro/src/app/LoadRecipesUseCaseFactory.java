@@ -20,8 +20,6 @@ import service.search.interface_adapter.SearchController;
 import service.search.interface_adapter.SearchViewModel;
 import service.search.use_case.SearchDataAccessInterface;
 import view.SearchView;
-import service.login.interface_adapter.LoginViewModel;
-import app.LogoutUseCaseFactory;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -61,7 +59,7 @@ public class LoadRecipesUseCaseFactory {
     }
 
     public static LoadRecipesController createLoadRecipesUseCase(ViewManagerModel viewManagerModel, LoadRecipesViewModel loadRecipesViewModel, LoadRecipesDataAccessInterface loadRecipesDataAccessObject) throws IOException{
-        LoadRecipesOutputBoundary loadRecipesOutputBoundary = new LoadRecipesPresenter(loadRecipesViewModel);
+        LoadRecipesOutputBoundary loadRecipesOutputBoundary = new LoadRecipesPresenter(loadRecipesViewModel, viewManagerModel);
         LoadRecipesInputBoundary loadRecipesInputBoundary = new LoadRecipesInteractor(loadRecipesDataAccessObject, loadRecipesOutputBoundary);
         return new LoadRecipesController(loadRecipesInputBoundary);
     }

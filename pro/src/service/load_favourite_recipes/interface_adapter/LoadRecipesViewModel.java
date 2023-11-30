@@ -10,7 +10,7 @@ public class LoadRecipesViewModel extends ViewModel {
     private LoadRecipesState state = new LoadRecipesState();
 
     public LoadRecipesViewModel() {
-        super("main");
+        super("favourite recipes");
     }
 
     public void setState(LoadRecipesState state) {
