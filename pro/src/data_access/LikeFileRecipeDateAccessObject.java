@@ -10,7 +10,7 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
 
-    private final Map<String, List<String>> like = new HashMap<>();
+    private final Map<String, ArrayList<String>> like = new HashMap<>();
 
     public LikeFileRecipeDateAccessObject(String csvPath)  throws IOException {
         csvFile = new File(csvPath);
@@ -29,11 +29,12 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
 
                 String row;
                 while ((row = reader.readLine()) != null) {
-                    String[] col = row.split(",\\s*");
+                    String[] col = row.split(",\\s");
                     String recipe = String.valueOf(col[headers.get("recipe")]);
                     String likeUsername = String.valueOf(col[headers.get("like")]);
                     String[] splitArray = likeUsername.split(","); // Split the string by comma and optional space
-                    List<String> likeList = Arrays.asList(splitArray); // Convert array to List
+                    ArrayList<String> likeList= new ArrayList<String>(Arrays.asList(splitArray));// Convert array to List
+                    likeList.removeIf(people -> people.contains("LUN"));
                     like.put(recipe, likeList);
                 }
             }
@@ -47,10 +48,13 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
             writer.write(String.join(", ", headers.keySet()));
             writer.newLine();
 
-            for (List<String> likeList : like.values()) {
-                String likeUsername = String.join(",", likeList);
+            for (ArrayList<String> likeList : like.values()) {
+                String likeUsername
+                        = likeList.toString().replace("[", "")
+                        .replace("]", "")
+                        .replace(" ", "");
                 String line = String.format("%s, %s",
-                        getKeyFromValue(like, likeList), likeUsername);
+                        getKeyFromValue(like, likeList), "LUN," + likeUsername);
                 writer.write(line);
                 writer.newLine();
             }
@@ -62,8 +66,8 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
         }
     }
 
-    private Object getKeyFromValue(Map<String, List<String>> like, List<String> likeList) {
-        for (Map.Entry<String, List<String>> entry : like.entrySet()) {
+    private Object getKeyFromValue(Map<String, ArrayList<String>> like, List<String> likeList) {
+        for (Map.Entry<String, ArrayList<String>> entry : like.entrySet()) {
             if (Objects.equals(likeList, entry.getValue())) {
                 return entry.getKey();
             }
@@ -81,7 +85,7 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
                 like.get(recipe).add(username);
             }
         } else {
-            List<String> likeList = new ArrayList<>();
+            ArrayList<String> likeList = new ArrayList<>();
             likeList.add(username);
             like.put(recipe, likeList);
         }
