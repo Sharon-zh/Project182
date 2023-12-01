@@ -13,7 +13,7 @@ import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class LoginView extends JPanel implements ActionListener, PropertyChangeListener {
+public class  LoginView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "log in";
     private final LoginViewModel loginViewModel;
 
@@ -115,11 +115,16 @@ public class LoginView extends JPanel implements ActionListener, PropertyChangeL
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        LoginState state = (LoginState) evt.getNewValue();
-        setFields(state);
+        if (evt.getPropertyName().equals("log in")) {
+            LoginState state = (LoginState) evt.getNewValue();
+            setFields(state);
+        } else if (evt.getPropertyName().equals("sign up")) {
+            System.out.println("Click sign up");
+        }
     }
 
     private void setFields(LoginState state) {
         usernameInputField.setText(state.getUsername());
+        passwordInputField.setText(null);
     }
 }
