@@ -73,33 +73,34 @@ public class SearchResultView extends JPanel implements ActionListener, Property
         if (evt.getPropertyName().equals("search")) {
             buttons.removeAll();
             SearchState searchstate = (SearchState) evt.getNewValue();
-            Set<String> recipe_name = searchstate.getSearchResult().keySet();
-            Map<String, Recipe> recipe_map = searchstate.getSearchResult();
-            for (String buttonName : recipe_name) {
-                JButton recipeButton = new JButton(buttonName);
-                buttons.add(recipeButton);
-                recipeButton.addActionListener(new ActionListener() {
+            if (searchstate.getSearchResult() != null){
+                Set<String> recipe_name = searchstate.getSearchResult().keySet();
+                Map<String, Recipe> recipe_map = searchstate.getSearchResult();
+                for (String buttonName : recipe_name) {
+                    JButton recipeButton = new JButton(buttonName);
+                    buttons.add(recipeButton);
+                    recipeButton.addActionListener(new ActionListener() {
 
+                        @Override
+                        public void actionPerformed(ActionEvent evt) {
+                            if (evt.getSource().equals(recipeButton)) {
+                                checkRecipeController.execute(recipe_map.get(buttonName));
+                            }
+                        }
+                    });
+                }
+
+                cancel = new JButton(SearchViewModel.CANCEL_BUTTON_LABEL);
+                buttons.add(cancel);
+                cancel.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(recipeButton)) {
-                            checkRecipeController.execute(recipe_map.get(buttonName));
+                        if (evt.getSource().equals(cancel)) {
+                            returnToMainController.execute();
                         }
                     }
                 });
             }
-
-            cancel = new JButton(SearchViewModel.CANCEL_BUTTON_LABEL);
-            buttons.add(cancel);
-            cancel.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent evt) {
-                    if (evt.getSource().equals(cancel)) {
-                        returnToMainController.execute();
-                    }
-                }
-            });
-
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             this.add(buttons);
         }

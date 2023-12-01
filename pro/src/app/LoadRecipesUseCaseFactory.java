@@ -1,6 +1,7 @@
 package app;
 
 import interface_adapter.ViewManagerModel;
+import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeViewModel;
 import service.check_recipe.interface_adapter.CheckRecipeViewModel;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesController;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesPresenter;
@@ -37,16 +38,16 @@ public class LoadRecipesUseCaseFactory {
             LoadRecipesViewModel loadRecipesViewModel,
             LoginViewModel loginViewModel,
             LoadRecipesDataAccessInterface loadRecipesDataAccessObject,
-            RecommendationDataAccessInterface recommendationDataAccessObject) {
+            RecommendationDataAccessInterface recommendationDataAccessObject, CheckFavourRecipeViewModel checkFavourRecipeViewModel) {
         try {
             SearchController searchController = SearchUseCaseFactory.createSearchUseCase(viewManagerModel, searchViewModel,
                     checkRecipeViewModel, userDataAccessObject);
             LogoutController logoutController = LogoutUseCaseFactory.createLogoutUseCase(viewManagerModel, loginViewModel);
             RecommendationController recommendationController =
                     RecommendationUseCaseFactory.createUserRecommendationUseCase(viewManagerModel,
-                            recommendationViewModel, recommendationDataAccessObject);
+                            recommendationViewModel, recommendationDataAccessObject, checkRecipeViewModel);
             LoadRecipesController loadRecipesController = LoadRecipesUseCaseFactory.createLoadRecipesUseCase(
-                    viewManagerModel, loadRecipesViewModel, loadRecipesDataAccessObject);
+                    viewManagerModel, loadRecipesViewModel, loadRecipesDataAccessObject, checkFavourRecipeViewModel);
             return new SearchView(searchViewModel, logoutViewModel, recommendationViewModel,  loadRecipesViewModel,
                     loginViewModel, searchController, logoutController, recommendationController, loadRecipesController);
         } catch (IOException e) {
@@ -56,8 +57,8 @@ public class LoadRecipesUseCaseFactory {
         return null;
     }
 
-    public static LoadRecipesController createLoadRecipesUseCase(ViewManagerModel viewManagerModel, LoadRecipesViewModel loadRecipesViewModel, LoadRecipesDataAccessInterface loadRecipesDataAccessObject) throws IOException{
-        LoadRecipesOutputBoundary loadRecipesOutputBoundary = new LoadRecipesPresenter(loadRecipesViewModel, viewManagerModel);
+    public static LoadRecipesController createLoadRecipesUseCase(ViewManagerModel viewManagerModel, LoadRecipesViewModel loadRecipesViewModel, LoadRecipesDataAccessInterface loadRecipesDataAccessObject, CheckFavourRecipeViewModel checkFavourRecipeViewModel) throws IOException{
+        LoadRecipesOutputBoundary loadRecipesOutputBoundary = new LoadRecipesPresenter(loadRecipesViewModel, viewManagerModel, checkFavourRecipeViewModel);
         LoadRecipesInputBoundary loadRecipesInputBoundary = new LoadRecipesInteractor(loadRecipesDataAccessObject, loadRecipesOutputBoundary);
         return new LoadRecipesController(loadRecipesInputBoundary);
     }

@@ -6,7 +6,9 @@ import java.util.Map;
 
 public class CheckFavourRecipeState {
     private Recipe recipe;
-    private String noResultError = "";
+    private String noResultError = null;
+
+    private String username = "";
 
     public CheckFavourRecipeState(CheckFavourRecipeState copy) {
         recipe = copy.recipe;
@@ -27,4 +29,11 @@ public class CheckFavourRecipeState {
 
     public void setNoResultError(String noResultError) {this.noResultError = noResultError;}
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
 }

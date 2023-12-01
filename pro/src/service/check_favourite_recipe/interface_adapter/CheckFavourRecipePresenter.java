@@ -20,6 +20,7 @@ public class CheckFavourRecipePresenter implements CheckFavourRecipeOutputBounda
     public void prepareSuccessView(CheckFavourRecipeOutputData checkFavourRecipeOutputData) {
         CheckFavourRecipeState checkFavourRecipeState = checkFavourRecipeViewModel.getState();
         checkFavourRecipeState.setRecipe(checkFavourRecipeOutputData.getRecipe());
+        checkFavourRecipeState.setNoResultError(null);
         checkFavourRecipeViewModel.setState(checkFavourRecipeState);
         checkFavourRecipeViewModel.firePropertyChanged();
 

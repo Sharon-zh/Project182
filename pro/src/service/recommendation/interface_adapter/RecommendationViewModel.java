@@ -16,7 +16,7 @@ public class RecommendationViewModel extends ViewModel {
 
     private RecommendationState state = new RecommendationState();
 
-    public RecommendationViewModel() {super("recommendation");}
+    public RecommendationViewModel() {super("recommend");}
     public void setState(RecommendationState state) {
         this.state = state;
     }
