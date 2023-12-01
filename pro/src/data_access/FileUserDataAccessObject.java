@@ -49,6 +49,7 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
                     String recipeNames = String.valueOf(col[headers.get("favourite_recipes")]);
                     String[] splitArray = recipeNames.split(",");
                     ArrayList<String> favouriteRecipeList = new ArrayList<String>(Arrays.asList(splitArray));
+                    favouriteRecipeList.removeIf(recipe -> recipe.contains("FR"));
                     LocalDateTime ldt = LocalDateTime.parse(creationTimeText);
                     User user = userFactory.create(username, password, ldt);
                     user.setFavoriteRecipeList(favouriteRecipeList);
