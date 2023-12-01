@@ -6,11 +6,11 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class SearchViewModel extends ViewModel {
-    public static final String CANCEL_BUTTON_LABEL = "cancel";
+    public static final String CANCEL_BUTTON_LABEL = "Cancel";
 
     public static final String TITLE_LABEL = "Main";
     public static final String KEYWORD_LABEL = "Keyword";
-    public static final String SEARCH_BUTTON_LABEL = "search";
+    public static final String SEARCH_BUTTON_LABEL = "Search";
     private SearchState state = new SearchState();
     public SearchViewModel() {super("search result");}
     public void setState(SearchState state) {this.state = state;}

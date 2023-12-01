@@ -9,7 +9,6 @@ import service.load_favourite_recipes.use_case.LoadRecipesDataAccessInterface;
 import service.load_favourite_recipes.use_case.LoadRecipesInputBoundary;
 import service.load_favourite_recipes.use_case.LoadRecipesInteractor;
 import service.load_favourite_recipes.use_case.LoadRecipesOutputBoundary;
-import service.logged_in.interface_adapter.LoggedInViewModel;
 import service.login.interface_adapter.LoginViewModel;
 import service.logout.interface_adapter.LogoutController;
 import service.logout.interface_adapter.LogoutViewModel;
@@ -36,10 +35,9 @@ public class LoadRecipesUseCaseFactory {
             LogoutViewModel logoutViewModel,
             RecommendationViewModel recommendationViewModel,
             LoadRecipesViewModel loadRecipesViewModel,
-            LoggedInViewModel loggedInViewModel,
+            LoginViewModel loginViewModel,
             LoadRecipesDataAccessInterface loadRecipesDataAccessObject,
-            RecommendationDataAccessInterface recommendationDataAccessObject,
-            LoginViewModel loginViewModel) {
+            RecommendationDataAccessInterface recommendationDataAccessObject) {
         try {
             SearchController searchController = SearchUseCaseFactory.createSearchUseCase(viewManagerModel, searchViewModel,
                     checkRecipeViewModel, userDataAccessObject);
@@ -50,7 +48,7 @@ public class LoadRecipesUseCaseFactory {
             LoadRecipesController loadRecipesController = LoadRecipesUseCaseFactory.createLoadRecipesUseCase(
                     viewManagerModel, loadRecipesViewModel, loadRecipesDataAccessObject);
             return new SearchView(searchViewModel, logoutViewModel, recommendationViewModel,  loadRecipesViewModel,
-                    loggedInViewModel, searchController, logoutController, recommendationController, loadRecipesController);
+                    loginViewModel, searchController, logoutController, recommendationController, loadRecipesController);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Could not open, please try again.");
         }

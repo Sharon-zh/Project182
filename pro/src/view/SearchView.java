@@ -3,8 +3,8 @@ package view;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesController;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesState;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesViewModel;
-import service.logged_in.interface_adapter.LoggedInState;
-import service.logged_in.interface_adapter.LoggedInViewModel;
+import service.login.interface_adapter.LoginState;
+import service.login.interface_adapter.LoginViewModel;
 import service.logout.interface_adapter.LogoutController;
 import service.logout.interface_adapter.LogoutViewModel;
 import service.recommendation.interface_adapter.RecommendationController;
@@ -29,8 +29,6 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
     private final LogoutViewModel logoutViewModel;
     private final RecommendationViewModel recommendationViewModel;
     private final LoadRecipesViewModel loadRecipesViewModel;
-    private final LoggedInViewModel loggedInViewModel;
-
     private final JTextField keywordInputField = new JTextField(15);
     private final SearchController searchController;
     private final LogoutController logoutController;
@@ -42,18 +40,19 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
     private final JButton logout;
     private final JButton recommend;
     private final JButton favouriteRecipes;
+    private final LoginViewModel loginViewModel;
 
 
     public SearchView(SearchViewModel searchViewModel, LogoutViewModel logoutViewModel,
                       RecommendationViewModel recommendationViewModel, LoadRecipesViewModel loadRecipesViewModel,
-                      LoggedInViewModel loggedInViewModel, SearchController searchController,
+                      LoginViewModel loginViewModel, SearchController searchController,
                       LogoutController logoutController, RecommendationController recommendationController,
                       LoadRecipesController loadRecipesController) {
         this.searchViewModel = searchViewModel;
         this.logoutViewModel = logoutViewModel;
         this.recommendationViewModel = recommendationViewModel;
         this.loadRecipesViewModel = loadRecipesViewModel;
-        this.loggedInViewModel = loggedInViewModel;
+        this.loginViewModel = loginViewModel;
         this.searchController = searchController;
         this.logoutController = logoutController;
         this.recommendationController = recommendationController;
@@ -97,7 +96,7 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(logout)) {
-                            LoggedInState currentState = loggedInViewModel.getState();
+                            LoginState currentState = loginViewModel.getState();
                             logoutController.execute(currentState.getUsername());
                         }
                     }
@@ -120,7 +119,7 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(favouriteRecipes)) {
-                            LoggedInState currentState = loggedInViewModel.getState();
+                            LoginState currentState = loginViewModel.getState();
                             loadRecipesController.execute(currentState.getUsername());
                         }
                     }

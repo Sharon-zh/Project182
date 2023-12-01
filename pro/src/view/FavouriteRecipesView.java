@@ -4,7 +4,7 @@ import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeControl
 import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeState;
 import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeViewModel;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesViewModel;
-import service.logged_in.interface_adapter.LoggedInViewModel;
+import service.login.interface_adapter.LoginViewModel;
 import service.remove_favourite_recipe.interface_adapter.RemoveRecipeController;
 import service.remove_favourite_recipe.interface_adapter.RemoveRecipeViewModel;
 import service.return_to_main.interface_adapter.ReturnToMainController;
@@ -26,7 +26,7 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
     private final LoadRecipesViewModel loadRecipesViewModel;
     private final ReturnToMainViewModel returnToMainViewModel;
     private final RemoveRecipeViewModel removeRecipeViewModel;
-    private final LoggedInViewModel loggedInViewModel;
+    private final LoginViewModel loginViewModel;
     private final CheckFavourRecipeViewModel checkFavourRecipeViewModel;
     private final ReturnToMainController returnToMainController;
     private final RemoveRecipeController removeRecipeController;
@@ -36,15 +36,15 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
 
 
     public FavouriteRecipesView(LoadRecipesViewModel loadRecipesViewModel, ReturnToMainViewModel returnToMainViewModel,
-                                RemoveRecipeViewModel removeRecipeViewModel, LoggedInViewModel loggedInViewModel,
-                                CheckFavourRecipeViewModel checkFavourRecipeViewModel,
+                                RemoveRecipeViewModel removeRecipeViewModel,
+                                LoginViewModel loginViewModel, CheckFavourRecipeViewModel checkFavourRecipeViewModel,
                                 ReturnToMainController returnToMainController,
                                 RemoveRecipeController removeRecipeController,
                                 CheckFavourRecipeController checkFavourRecipeController) {
         this.loadRecipesViewModel = loadRecipesViewModel;
         this.returnToMainViewModel = returnToMainViewModel;
         this.removeRecipeViewModel = removeRecipeViewModel;
-        this.loggedInViewModel = loggedInViewModel;
+        this.loginViewModel = loginViewModel;
         this.checkFavourRecipeViewModel = checkFavourRecipeViewModel;
         this.returnToMainController = returnToMainController;
         this.removeRecipeController = removeRecipeController;
@@ -108,7 +108,7 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                             if (evt.getSource().equals(removeRecipeButton)) {
-                                String userName = loggedInViewModel.getState().getUsername();
+                                String userName = loginViewModel.getState().getUsername();
                                 removeRecipeController.execute(userName, recipeName);
                             }
                         }

@@ -8,10 +8,8 @@ import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeViewMod
 import service.check_recipe.interface_adapter.CheckRecipeViewModel;
 import service.comment.interface_adapter.CommentViewModel;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesViewModel;
-import service.logged_in.interface_adapter.LoggedInViewModel;
 import service.logout.interface_adapter.LogoutViewModel;
 import service.recommendation.interface_adapter.RecommendationViewModel;
-import service.recommendation.use_case.RecommendationDataAccessInterface;
 import service.remove_favourite_recipe.interface_adapter.RemoveRecipeViewModel;
 import service.return_to_main.interface_adapter.ReturnToMainViewModel;
 import service.search.interface_adapter.SearchViewModel;
@@ -47,7 +45,6 @@ public class Main {
         RecommendationViewModel recommendationViewModel = new RecommendationViewModel();
         CheckRecipeViewModel checkRecipeViewModel = new CheckRecipeViewModel();
         ReturnToMainViewModel returnToMainViewModel = new ReturnToMainViewModel();
-        LoggedInViewModel loggedInViewModel = new LoggedInViewModel();
         SearchViewModel searchViewModel = new SearchViewModel();
         LogoutViewModel logoutViewModel = new LogoutViewModel();
         CheckFavourRecipeViewModel checkFavourRecipeViewModel = new CheckFavourRecipeViewModel();
@@ -83,23 +80,23 @@ public class Main {
         // Add View to views
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, userDataAccessObject);
         views.add(signupView, signupView.viewName);
-        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject, logoutViewModel);
+        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, userDataAccessObject, logoutViewModel);
 
         views.add(loginView, loginView.viewName);
 
-        SearchView searchView = LoadRecipesUseCaseFactory.create(viewManagerModel, searchViewModel, checkRecipeViewModel, apiRecipeDataAccessObject, logoutViewModel, recommendationViewModel, loadRecipesViewModel, loggedInViewModel, userDataAccessObject, randomRecipeDataAccessObject, loginViewModel);
+        SearchView searchView = LoadRecipesUseCaseFactory.create(viewManagerModel, searchViewModel, checkRecipeViewModel, apiRecipeDataAccessObject, logoutViewModel, recommendationViewModel, loadRecipesViewModel, loginViewModel, userDataAccessObject, randomRecipeDataAccessObject);
         views.add(searchView, searchView.viewName);
-        SearchResultView searchResultView = SearchUseCaseFactory.create(searchViewModel, checkRecipeViewModel, returnToMainViewModel, viewManagerModel, loggedInViewModel, apiRecipeDataAccessObject);
+        SearchResultView searchResultView = SearchUseCaseFactory.create(searchViewModel, checkRecipeViewModel, returnToMainViewModel, viewManagerModel, logoutViewModel, apiRecipeDataAccessObject);
         views.add(searchResultView, searchResultView.viewName);
-        RecommendView recommendView = RecommendationUseCaseFactory.create(viewManagerModel, checkRecipeViewModel, recommendationViewModel, randomRecipeDataAccessObject, returnToMainViewModel, loggedInViewModel);
+        RecommendView recommendView = RecommendationUseCaseFactory.create(viewManagerModel, checkRecipeViewModel, recommendationViewModel, randomRecipeDataAccessObject, returnToMainViewModel, logoutViewModel);
         views.add(recommendView, recommendView.viewName);
-        FavouriteRecipesView favouriteRecipesView = CheckFavourRecipeUseCaseFactory.create(viewManagerModel, checkFavourRecipeViewModel, apiRecipeDataAccessObject, loadRecipesViewModel, returnToMainViewModel, removeRecipeViewModel, loggedInViewModel, userDataAccessObject);
+        FavouriteRecipesView favouriteRecipesView = CheckFavourRecipeUseCaseFactory.create(viewManagerModel, checkFavourRecipeViewModel, apiRecipeDataAccessObject, loadRecipesViewModel, returnToMainViewModel, removeRecipeViewModel, loginViewModel, userDataAccessObject,logoutViewModel);
         views.add(favouriteRecipesView, favouriteRecipesView.viewName);
 //        RecipeView recipeView = SaveFavouriteRecipeUseCaseFactory.create()
 
 
         // Set the beginning View(should change to log in)
-        viewManagerModel.setActiveView(searchView.viewName);
+        viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
