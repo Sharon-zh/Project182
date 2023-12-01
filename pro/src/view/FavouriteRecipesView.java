@@ -59,31 +59,17 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
         JLabel title = new JLabel(RemoveRecipeViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        ArrayList<String> recipeNames = loadRecipesViewModel.getState().getFavouriteRecipes();
-        for (String recipeName: recipeNames){
-            JButton recipeButton = new JButton(recipeName);
-            buttons.add(recipeButton);
-            recipeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent evt) {
-                    if (evt.getSource().equals(recipeButton)) {
-                        checkFavourRecipeController.execute(recipeName);
-                    }
+        cancel = new JButton(SearchViewModel.CANCEL_BUTTON_LABEL);
+        buttons.add(cancel);
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if (evt.getSource().equals(cancel)) {
+                    returnToMainController.execute();
                 }
-            });
+            }
+        });
 
-            JButton removeRecipeButton = new JButton("remove " + recipeName);
-            buttons.add(removeRecipeButton);
-            removeRecipeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent evt) {
-                    if (evt.getSource().equals(removeRecipeButton)) {
-                        String userName = loggedInViewModel.getState().getUsername();
-                        removeRecipeController.execute(userName, recipeName);
-                    }
-                }
-            });
-        }
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
         this.add(buttons);

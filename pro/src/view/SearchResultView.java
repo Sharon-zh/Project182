@@ -47,24 +47,17 @@ public class SearchResultView extends JPanel implements ActionListener, Property
 
         JLabel title = new JLabel(SearchViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JPanel buttons = new JPanel();
-        if (searchViewModel.getState().getSearchResult() != null) {
-            Set<String> recipe_name = searchViewModel.getState().getSearchResult().keySet();
-            Map<String, Recipe> recipe_map = searchViewModel.getState().getSearchResult();
-            for (String buttonName: recipe_name){
-                JButton recipeButton = new JButton(buttonName);
-                buttons.add(recipeButton);
-                recipeButton.addActionListener(new ActionListener() {
 
-                    @Override
-                    public void actionPerformed(ActionEvent evt) {
-                        if (evt.getSource().equals(recipeButton)) {
-                            checkRecipeController.execute(recipe_map.get(buttonName));
-                        }
-                    }
-                });
+        cancel = new JButton(SearchViewModel.CANCEL_BUTTON_LABEL);
+        buttons.add(cancel);
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if (evt.getSource().equals(cancel)) {
+                    returnToMainController.execute();
+                }
             }
-        }
+        });
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
