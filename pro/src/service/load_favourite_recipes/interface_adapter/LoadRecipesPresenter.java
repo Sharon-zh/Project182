@@ -4,13 +4,14 @@ import interface_adapter.ViewManagerModel;
 import service.load_favourite_recipes.use_case.LoadRecipesOutputBoundary;
 import service.load_favourite_recipes.use_case.LoadRecipesOutputData;
 
-import java.util.ArrayList;
-
 public class LoadRecipesPresenter implements LoadRecipesOutputBoundary {
     private final LoadRecipesViewModel loadRecipesViewModel;
+    private final ViewManagerModel viewManagerModel;
 
-    public LoadRecipesPresenter(LoadRecipesViewModel loadRecipesViewModel) {
+
+    public LoadRecipesPresenter(LoadRecipesViewModel loadRecipesViewModel, ViewManagerModel viewManagerModel) {
         this.loadRecipesViewModel = loadRecipesViewModel;
+        this.viewManagerModel = viewManagerModel;
     }
 
 
@@ -20,6 +21,9 @@ public class LoadRecipesPresenter implements LoadRecipesOutputBoundary {
         loadRecipesState.setFavouriteRecipes(loadRecipesOutputData.getFavouriteRecipes());
         loadRecipesViewModel.setState(loadRecipesState);
         loadRecipesViewModel.firePropertyChanged();
+
+        this.viewManagerModel.setActiveView(loadRecipesViewModel.getViewName());
+        this.viewManagerModel.firePropertyChanged();
     }
 
     @Override

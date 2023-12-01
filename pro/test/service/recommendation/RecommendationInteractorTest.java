@@ -1,4 +1,4 @@
-package service.Recommendation;
+package service.recommendation;
 
 import data_access.InMemoryRecipeDataAccessObject;
 import data_access.LikeFileRecipeDateAccessObject;
