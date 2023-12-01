@@ -176,7 +176,14 @@ public class RecipeView extends JPanel implements ActionListener, PropertyChange
                 this.add(save);
             }
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        } else if (evt.getPropertyName().equals("comment")) {
+            CommentState state = (CommentState) evt.getNewValue();
+            setFields(state);
         }
 
+    }
+
+    private void setFields(CommentState state) {
+        commentInputField.setText(null);
     }
 }
