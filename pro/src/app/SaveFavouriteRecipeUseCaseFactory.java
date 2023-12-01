@@ -1,6 +1,17 @@
 package app;
 
 import interface_adapter.ViewManagerModel;
+import service.check_recipe.interface_adapter.CheckRecipeController;
+import service.check_recipe.interface_adapter.CheckRecipeViewModel;
+import service.comment.interface_adapter.CommentController;
+import service.comment.interface_adapter.CommentViewModel;
+import service.comment.use_case.CommentDataAccessInterface;
+import service.like.interface_adapter.LikeController;
+import service.like.interface_adapter.LikeViewModel;
+import service.like.use_case.LikeDataAccessInterface;
+import service.logout.interface_adapter.LogoutViewModel;
+import service.return_to_main.interface_adapter.ReturnToMainController;
+import service.return_to_main.interface_adapter.ReturnToMainViewModel;
 import service.save_favourite_recipe.interface_adapter.SaveRecipeController;
 import service.save_favourite_recipe.interface_adapter.SaveRecipePresenter;
 import service.save_favourite_recipe.interface_adapter.SaveRecipeViewModel;
@@ -18,16 +29,19 @@ public class SaveFavouriteRecipeUseCaseFactory {
 
     public static RecipeView create(
             ViewManagerModel viewManagerModel,
-            SaveRecipeViewModel saveRecipeViewModel,
-            SaveRecipeDataAccessInterface userDataAccessObject) {
-
+            CheckRecipeViewModel checkRecipeViewModel,
+            LikeViewModel likeViewModel, LikeDataAccessInterface likeDataAccessObject, CommentViewModel commentViewModel, CommentDataAccessInterface commentDataAccessObject,
+            ReturnToMainViewModel returnToMainViewModel, LogoutViewModel logoutViewModel, SaveRecipeViewModel saveRecipeViewModel, SaveRecipeDataAccessInterface saveRecipeDataAccessObject){
         try {
-            SaveRecipeController saveRecipeController = createSaveRecipeUseCase(viewManagerModel, saveRecipeViewModel, userDataAccessObject);
-            return new RecipeView(saveRecipeViewModel, saveRecipeController);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Action failed, please try again.");
+            CheckRecipeController checkRecipeController = CheckRecipeUseCaseFactory.createCheckRecipeUseCase(viewManagerModel, checkRecipeViewModel);
+            LikeController likeController = LikeUseCaseFactory.createLikeUseCase(likeViewModel, likeDataAccessObject);
+            CommentController commentController = CommentUseCaseFactory.createCommentUseCase(viewManagerModel, commentViewModel, commentDataAccessObject);
+            ReturnToMainController returnToMainController = ReturnToMainUseCaseFactory.createReturnToMainUseCase(returnToMainViewModel, logoutViewModel, viewManagerModel);
+            SaveRecipeController saveRecipeController = SaveFavouriteRecipeUseCaseFactory.createSaveRecipeUseCase(viewManagerModel, saveRecipeViewModel, saveRecipeDataAccessObject);
+            return new RecipeView(checkRecipeViewModel, checkRecipeController, likeController, commentViewModel, commentController, returnToMainController, saveRecipeController);
+        } catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Could not open recipe data file.");
         }
-
         return null;
     }
 

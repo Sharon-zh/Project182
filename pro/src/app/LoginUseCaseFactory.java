@@ -3,6 +3,7 @@ package app;
 import entity.CommonUserFactory;
 import entity.UserFactory;
 import interface_adapter.ViewManagerModel;
+import service.load_favourite_recipes.interface_adapter.LoadRecipesViewModel;
 import service.login.interface_adapter.LoginController;
 import service.login.interface_adapter.LoginPresenter;
 import service.login.interface_adapter.LoginViewModel;
@@ -11,6 +12,8 @@ import service.login.use_case.LoginInteractor;
 import service.login.use_case.LoginOutputBoundary;
 import service.login.use_case.LoginUserDataAccessInterface;
 import service.logout.interface_adapter.LogoutViewModel;
+import service.recommendation.interface_adapter.RecommendationViewModel;
+import service.search.interface_adapter.SearchViewModel;
 import view.LoginView;
 
 import javax.swing.*;
@@ -23,10 +26,10 @@ public class LoginUseCaseFactory {
             ViewManagerModel viewManagerModel,
             LoginViewModel loginViewModel,
             LoginUserDataAccessInterface userDataAccessObject,
-            LogoutViewModel logoutViewModel) {
+            LogoutViewModel logoutViewModel, SearchViewModel searchViewModel, RecommendationViewModel recommendationViewModel, LoadRecipesViewModel loadRecipesViewModel) {
 
         try {
-            LoginController loginController = createLoginUseCase(viewManagerModel, loginViewModel, userDataAccessObject, logoutViewModel);
+            LoginController loginController = createLoginUseCase(viewManagerModel, loginViewModel, userDataAccessObject, logoutViewModel, searchViewModel, recommendationViewModel, loadRecipesViewModel);
             return new LoginView(loginViewModel, loginController);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Could not open user data file.");
@@ -39,10 +42,12 @@ public class LoginUseCaseFactory {
             ViewManagerModel viewManagerModel,
             LoginViewModel loginViewModel,
             LoginUserDataAccessInterface userDataAccessObject,
-            LogoutViewModel logoutViewModel) throws IOException {
+            LogoutViewModel logoutViewModel,
+            SearchViewModel searchViewModel, RecommendationViewModel recommendationViewModel,
+            LoadRecipesViewModel loadRecipesViewModel) throws IOException {
 
         // Notice how we pass this method's parameters to the Presenter.
-        LoginOutputBoundary loginOutputBoundary = new LoginPresenter(viewManagerModel, loginViewModel, logoutViewModel);
+        LoginOutputBoundary loginOutputBoundary = new LoginPresenter(viewManagerModel, loginViewModel, logoutViewModel, searchViewModel, recommendationViewModel, loadRecipesViewModel);
 
         UserFactory userFactory = new CommonUserFactory();
 

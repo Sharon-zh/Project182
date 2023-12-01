@@ -31,7 +31,7 @@ public class SearchUseCaseFactory {
 
             return new SearchResultView(searchViewModel, checkRecipeController, returnToMainController, searchController, checkRecipeViewModel, returnToMainViewModel);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Could not open user data file.");
+            JOptionPane.showMessageDialog(null, "Could not open recipe data file.");
         }
         return null;
     }

@@ -45,7 +45,7 @@ public class CheckFavourRecipeUseCaseFactory {
                     loginViewModel, checkFavourRecipeViewModel, returnToMainController,  removeRecipeController,
                     checkFavourRecipeController);
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Could not open user data file.");
+            JOptionPane.showMessageDialog(null, "Could not open recipe data file.");
         }
 
         return null;

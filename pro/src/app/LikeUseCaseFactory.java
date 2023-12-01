@@ -13,7 +13,7 @@ import java.io.IOException;
 public class LikeUseCaseFactory {
     private LikeUseCaseFactory() {}
 
-    private static LikeController createLikeUseCase(
+    public static LikeController createLikeUseCase(
             LikeViewModel likeViewModel,
             LikeDataAccessInterface userDataAccessObject) throws IOException {
 

@@ -1,10 +1,6 @@
 package service.recommendation.use_case;
 
-import entity.Recipe;
 import entity.RecommendedRecipes;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 public class RecommendationInteractor implements RecommendationInputBoundary{
     final RecommendationDataAccessInterface userDataAccessObject;

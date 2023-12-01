@@ -6,6 +6,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class CheckRecipeViewModel extends ViewModel {
+    public static final String TITLE_LABEL = "Recipe";
     private CheckRecipeState state = new CheckRecipeState();
 
     public CheckRecipeViewModel() {

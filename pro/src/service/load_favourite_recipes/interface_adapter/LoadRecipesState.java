@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class LoadRecipesState {
     private ArrayList<String> favouriteRecipes = null;
+    private String username = "";
 
     private String emptyMessage = null;
     public LoadRecipesState(LoadRecipesState copy) {
@@ -27,6 +28,12 @@ public class LoadRecipesState {
 
     public void setEmptyMessage(String emptyMessage) {
         this.emptyMessage = emptyMessage;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username){
+        this.username = username;
     }
 
 }

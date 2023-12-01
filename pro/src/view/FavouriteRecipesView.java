@@ -73,6 +73,7 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
         this.add(buttons);
+        System.out.println(2);
     }
 
 
@@ -84,6 +85,7 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getPropertyName().equals("check favourite recipe")) {
+
             CheckFavourRecipeState state = (CheckFavourRecipeState) evt.getNewValue();
             if (state.getNoResultError() != null) {
                 JOptionPane.showMessageDialog(this, state.getNoResultError());

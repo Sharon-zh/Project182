@@ -18,6 +18,7 @@ public class FileRecipeDataAccessObjectTest {
         RecipeFactory recipeFactory = new CommonRecipeFactory();
         FileRecipeDataAccessObject fileRecipeDataAccessObject = new FileRecipeDataAccessObject("./comment.csv", recipeFactory);
         fileRecipeDataAccessObject.save("beef", "h: good");
+        fileRecipeDataAccessObject.save("beef", "a: hi");
         int lineCount = 0;
         BufferedReader reader = new BufferedReader(new FileReader("./comment.csv"));
         while (reader.readLine() != null) {

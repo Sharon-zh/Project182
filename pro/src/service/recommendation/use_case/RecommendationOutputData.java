@@ -1,9 +1,6 @@
 package service.recommendation.use_case;
 
-import entity.Recipe;
 import entity.RecommendedRecipes;
-
-import java.util.Map;
 
 public class RecommendationOutputData {
     private final RecommendedRecipes random;
