@@ -96,12 +96,12 @@ public class Main {
         views.add(recommendView, recommendView.viewName);
         FavouriteRecipesView favouriteRecipesView = CheckFavourRecipeUseCaseFactory.create(viewManagerModel, checkFavourRecipeViewModel, apiRecipeDataAccessObject, loadRecipesViewModel, returnToMainViewModel, removeRecipeViewModel, loginViewModel, userDataAccessObject,logoutViewModel);
         views.add(favouriteRecipesView, favouriteRecipesView.viewName);
-        RecipeView recipeView = SaveFavouriteRecipeUseCaseFactory.create(viewManagerModel, checkRecipeViewModel, likeViewModel, likeFileRecipeDateAccessObject, commentViewModel, recipeDataAccessObject, returnToMainViewModel, logoutViewModel, saveRecipeViewModel, userDataAccessObject);
+        RecipeView recipeView = SaveFavouriteRecipeUseCaseFactory.create(viewManagerModel, checkRecipeViewModel, checkFavourRecipeViewModel, likeViewModel, likeFileRecipeDateAccessObject, commentViewModel, recipeDataAccessObject, returnToMainViewModel, logoutViewModel, saveRecipeViewModel, userDataAccessObject, removeRecipeViewModel, userDataAccessObject);
         views.add(recipeView, recipeView.viewName);
 
 
         // Set the beginning View(should change to log in)
-        viewManagerModel.setActiveView(loginView.viewName);
+        viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();

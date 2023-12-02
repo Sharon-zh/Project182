@@ -48,13 +48,13 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
             writer.write(String.join(", ", headers.keySet()));
             writer.newLine();
 
-            for (ArrayList<String> likeList : like.values()) {
+            for (String recipe : like.keySet()) {
                 String likeUsername
-                        = likeList.toString().replace("[", "")
+                        = like.get(recipe).toString().replace("[", "")
                         .replace("]", "")
                         .replace(" ", "");
                 String line = String.format("%s, %s",
-                        getKeyFromValue(like, likeList), "LUN," + likeUsername);
+                        recipe, "LUN," + likeUsername);
                 writer.write(line);
                 writer.newLine();
             }
@@ -65,16 +65,6 @@ public class LikeFileRecipeDateAccessObject implements LikeDataAccessInterface {
             throw new RuntimeException(e);
         }
     }
-
-    private Object getKeyFromValue(Map<String, ArrayList<String>> like, List<String> likeList) {
-        for (Map.Entry<String, ArrayList<String>> entry : like.entrySet()) {
-            if (Objects.equals(likeList, entry.getValue())) {
-                return entry.getKey();
-            }
-        }
-        return null; // If the value is not found in the map
-    }
-
 
     @Override
     public void like(String recipe, String username) {

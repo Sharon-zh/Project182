@@ -3,6 +3,7 @@ package view;
 import service.login.interface_adapter.LoginController;
 import service.login.interface_adapter.LoginState;
 import service.login.interface_adapter.LoginViewModel;
+import service.signup.interface_adapter.SignupState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -119,7 +120,7 @@ public class  LoginView extends JPanel implements ActionListener, PropertyChange
             LoginState state = (LoginState) evt.getNewValue();
             setFields(state);
         } else if (evt.getPropertyName().equals("sign up")) {
-            System.out.println("Click sign up");
+
         }
     }
 

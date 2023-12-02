@@ -35,6 +35,7 @@ public class LikeRecipeDataAccessObjectTest {
         assertEquals(0, likeFileRecipeDateAccessObject.get("Spicy Arrabiata Penne"));
         likeFileRecipeDateAccessObject.like("Beef Asado", "zlt");
         assertEquals(1, likeFileRecipeDateAccessObject.get("Beef Asado"));
+        likeFileRecipeDateAccessObject.like("Beef Asado", "zlt");
     }
 
     @Test

@@ -23,8 +23,9 @@ public class LoadRecipesPresenter implements LoadRecipesOutputBoundary {
     public void prepareSuccessView(LoadRecipesOutputData loadRecipesOutputData) {
         LoadRecipesState loadRecipesState = loadRecipesViewModel.getState();
         loadRecipesState.setFavouriteRecipes(loadRecipesOutputData.getFavouriteRecipes());
-        loadRecipesViewModel.setState(loadRecipesState);
-        loadRecipesViewModel.firePropertyChanged();
+        loadRecipesState.setEmptyMessage(null);
+        this.loadRecipesViewModel.setState(loadRecipesState);
+        this.loadRecipesViewModel.firePropertyChanged();
 
         CheckFavourRecipeState checkFavourRecipeState = checkFavourRecipeViewModel.getState();
         checkFavourRecipeState.setUsername(loadRecipesState.getUsername());
