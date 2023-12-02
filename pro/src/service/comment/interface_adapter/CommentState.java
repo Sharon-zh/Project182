@@ -5,10 +5,10 @@ public class CommentState {
 
     private String recipeName;
 
-    public CommentState(CommentState copy){
-        comment = copy.comment;
-        recipeName = copy.recipeName;
-    }
+//    public CommentState(CommentState copy){
+//        comment = copy.comment;
+//        recipeName = copy.recipeName;
+//    }
 
     public CommentState() {
 

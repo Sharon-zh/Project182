@@ -6,10 +6,10 @@ public class CheckRecipeState {
     private Recipe recipe;
     private String username = "";
 
-    public CheckRecipeState(CheckRecipeState copy) {
-        recipe = copy.recipe;
-        username = copy.username;
-    }
+//    public CheckRecipeState(CheckRecipeState copy) {
+//        recipe = copy.recipe;
+//        username = copy.username;
+//    }
 
     public CheckRecipeState() {
     }

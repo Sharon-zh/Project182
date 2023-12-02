@@ -45,7 +45,7 @@ public class SearchResultView extends JPanel implements ActionListener, Property
         checkRecipeViewModel.addPropertyChangeListener(this);
         returnToMainViewModel.addPropertyChangeListener(this);
 
-        JLabel title = new JLabel(SearchViewModel.TITLE_LABEL);
+        JLabel title = new JLabel("Search Result");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         cancel = new JButton(SearchViewModel.CANCEL_BUTTON_LABEL);

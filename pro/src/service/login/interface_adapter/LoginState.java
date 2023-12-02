@@ -6,12 +6,12 @@ public class LoginState {
     private String password = "";
     private String passwordError = null;
 
-    public LoginState(LoginState copy) {
-        username = copy.username;
-        usernameError = copy.usernameError;
-        password = copy.password;
-        passwordError = copy.passwordError;
-    }
+//    public LoginState(LoginState copy) {
+//        username = copy.username;
+//        usernameError = copy.usernameError;
+//        password = copy.password;
+//        passwordError = copy.passwordError;
+//    }
 
     // Because of the previous copy constructor, the default constructor must be explicit.
     public LoginState() {}

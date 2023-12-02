@@ -8,14 +8,14 @@ public class SignupState {
     private String repeatPassword = "";
     private String repeatPasswordError = null;
 
-    public SignupState(SignupState copy) {
-        username = copy.username;
-        usernameError = copy.usernameError;
-        password = copy.password;
-        passwordError = copy.passwordError;
-        repeatPassword = copy.repeatPassword;
-        repeatPasswordError = copy.repeatPasswordError;
-    }
+//    public SignupState(SignupState copy) {
+//        username = copy.username;
+//        usernameError = copy.usernameError;
+//        password = copy.password;
+//        passwordError = copy.passwordError;
+//        repeatPassword = copy.repeatPassword;
+//        repeatPasswordError = copy.repeatPasswordError;
+//    }
 
     // Because of the previous copy constructor, the default constructor must be explicit.
     public SignupState() {
@@ -33,17 +33,17 @@ public class SignupState {
         return password;
     }
 
-    public String getPasswordError() {
-        return passwordError;
-    }
+//    public String getPasswordError() {
+//        return passwordError;
+//    }
 
     public String getRepeatPassword() {
         return repeatPassword;
     }
 
-    public String getRepeatPasswordError() {
-        return repeatPasswordError;
-    }
+//    public String getRepeatPasswordError() {
+//        return repeatPasswordError;
+//    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -57,17 +57,17 @@ public class SignupState {
         this.password = password;
     }
 
-    public void setPasswordError(String passwordError) {
-        this.passwordError = passwordError;
-    }
+//    public void setPasswordError(String passwordError) {
+//        this.passwordError = passwordError;
+//    }
 
     public void setRepeatPassword(String repeatPassword) {
         this.repeatPassword = repeatPassword;
     }
 
-    public void setRepeatPasswordError(String repeatPasswordError) {
-        this.repeatPasswordError = repeatPasswordError;
-    }
+//    public void setRepeatPasswordError(String repeatPasswordError) {
+//        this.repeatPasswordError = repeatPasswordError;
+//    }
 
     @Override
     public String toString() {

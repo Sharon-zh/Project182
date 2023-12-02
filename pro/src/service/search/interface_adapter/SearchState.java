@@ -10,12 +10,12 @@ public class SearchState {
     private String noResultError = null;
     private String username = "";
 
-    public SearchState (SearchState copy) {
-        searchWord = copy.searchWord;
-        result = copy.result;
-        noResultError = copy.noResultError;
-        username = copy.username;
-    }
+//    public SearchState (SearchState copy) {
+//        searchWord = copy.searchWord;
+//        result = copy.result;
+//        noResultError = copy.noResultError;
+//        username = copy.username;
+//    }
 
     public SearchState() {}
 

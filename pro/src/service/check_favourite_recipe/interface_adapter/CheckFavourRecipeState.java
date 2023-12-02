@@ -10,10 +10,10 @@ public class CheckFavourRecipeState {
 
     private String username = "";
 
-    public CheckFavourRecipeState(CheckFavourRecipeState copy) {
-        recipe = copy.recipe;
-        noResultError = copy.noResultError;
-    }
+//    public CheckFavourRecipeState(CheckFavourRecipeState copy) {
+//        recipe = copy.recipe;
+//        noResultError = copy.noResultError;
+//    }
 
     public CheckFavourRecipeState() {
     }
@@ -25,7 +25,7 @@ public class CheckFavourRecipeState {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
-    public String getNoResultError() {return this.noResultError ;}
+//    public String getNoResultError() {return this.noResultError ;}
 
     public void setNoResultError(String noResultError) {this.noResultError = noResultError;}
 

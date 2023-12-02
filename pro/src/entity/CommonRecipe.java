@@ -69,6 +69,4 @@ public class CommonRecipe implements Recipe {
     public String getCategory() {
         return category;
     }
-
-    public void setComments(){}
 }

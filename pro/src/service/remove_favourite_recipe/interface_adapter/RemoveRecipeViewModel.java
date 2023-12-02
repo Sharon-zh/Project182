@@ -7,8 +7,8 @@ import java.beans.PropertyChangeSupport;
 
 public class RemoveRecipeViewModel extends ViewModel {
 
-    public static final String REMOVE_BUTTON_LABEL = "remove";
-    public static final String CANCEL_BUTTON_LABEL = "cancel";
+//    public static final String REMOVE_BUTTON_LABEL = "remove";
+//    public static final String CANCEL_BUTTON_LABEL = "cancel";
     public static final String TITLE_LABEL = "favourite recipes";
     private RemoveRecipeState state = new RemoveRecipeState();
 

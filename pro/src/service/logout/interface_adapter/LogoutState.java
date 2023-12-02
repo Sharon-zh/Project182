@@ -4,9 +4,9 @@ public class LogoutState {
 
     private String username = "";
 
-    public LogoutState(LogoutState copy) {
-        username = copy.username;
-    }
+//    public LogoutState(LogoutState copy) {
+//        username = copy.username;
+//    }
 
     public LogoutState() {
     }

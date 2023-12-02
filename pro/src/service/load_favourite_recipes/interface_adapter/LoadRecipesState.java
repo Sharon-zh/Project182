@@ -7,10 +7,10 @@ public class LoadRecipesState {
     private String username = "";
 
     private String emptyMessage = null;
-    public LoadRecipesState(LoadRecipesState copy) {
-        favouriteRecipes = copy.favouriteRecipes;
-        emptyMessage = copy.emptyMessage;
-    }
+//    public LoadRecipesState(LoadRecipesState copy) {
+//        favouriteRecipes = copy.favouriteRecipes;
+//        emptyMessage = copy.emptyMessage;
+//    }
 
     public LoadRecipesState() {
     }
