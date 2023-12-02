@@ -1,9 +1,10 @@
 package view;
 
+import service.jump_to_signup.interface_adapter.JumpToSignupController;
+import service.jump_to_signup.interface_adapter.JumpToSignupViewModel;
 import service.login.interface_adapter.LoginController;
 import service.login.interface_adapter.LoginState;
 import service.login.interface_adapter.LoginViewModel;
-import service.signup.interface_adapter.SignupState;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,11 +28,15 @@ public class  LoginView extends JPanel implements ActionListener, PropertyChange
     final JButton logIn;
     final JButton signUp;
     private final LoginController loginController;
+    private final JumpToSignupController jumpToSignupController;
+    private final JumpToSignupViewModel jumpToSignupViewModel;
 
-    public LoginView(LoginViewModel loginViewModel, LoginController controller) {
+    public LoginView(LoginViewModel loginViewModel, LoginController controller, JumpToSignupController jumpToSignupController, JumpToSignupViewModel jumpToSignupViewModel) {
 
         this.loginController = controller;
         this.loginViewModel = loginViewModel;
+        this.jumpToSignupController = jumpToSignupController;
+        this.jumpToSignupViewModel = jumpToSignupViewModel;
         this.loginViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel("Login Screen");
@@ -65,7 +70,14 @@ public class  LoginView extends JPanel implements ActionListener, PropertyChange
                 }
         );
 
-        signUp.addActionListener(this);
+        signUp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                if (evt.getSource().equals(signUp)) {
+                    jumpToSignupController.execute();
+                }
+            }
+        });
 
         usernameInputField.addKeyListener(new KeyListener() {
             @Override
@@ -119,8 +131,11 @@ public class  LoginView extends JPanel implements ActionListener, PropertyChange
         if (evt.getPropertyName().equals("log in")) {
             LoginState state = (LoginState) evt.getNewValue();
             setFields(state);
-        } else if (evt.getPropertyName().equals("sign up")) {
-
+            if (state.getUsernameError() != null) {
+                JOptionPane.showMessageDialog(this, state.getUsernameError());
+            } else if (state.getPasswordError() != null) {
+                JOptionPane.showMessageDialog(this, state.getPasswordError());
+            }
         }
     }
 

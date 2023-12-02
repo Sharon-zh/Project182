@@ -7,6 +7,7 @@ import interface_adapter.ViewManagerModel;
 import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeViewModel;
 import service.check_recipe.interface_adapter.CheckRecipeViewModel;
 import service.comment.interface_adapter.CommentViewModel;
+import service.jump_to_signup.interface_adapter.JumpToSignupViewModel;
 import service.like.interface_adapter.LikeViewModel;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesViewModel;
 import service.logout.interface_adapter.LogoutViewModel;
@@ -53,6 +54,7 @@ public class Main {
         RemoveRecipeViewModel removeRecipeViewModel = new RemoveRecipeViewModel();
         LikeViewModel likeViewModel = new LikeViewModel();
         SaveRecipeViewModel saveRecipeViewModel = new SaveRecipeViewModel();
+        JumpToSignupViewModel jumpToSignupViewModel = new JumpToSignupViewModel();
 
 
         // Create File DAO
@@ -84,7 +86,7 @@ public class Main {
         // Add View to views
         SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel, userDataAccessObject);
         views.add(signupView, signupView.viewName);
-        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, userDataAccessObject, logoutViewModel, searchViewModel, recommendationViewModel, loadRecipesViewModel);
+        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, userDataAccessObject, logoutViewModel, searchViewModel, recommendationViewModel, loadRecipesViewModel, jumpToSignupViewModel, signupViewModel);
 
         views.add(loginView, loginView.viewName);
 
@@ -101,7 +103,7 @@ public class Main {
 
 
         // Set the beginning View(should change to log in)
-        viewManagerModel.setActiveView(signupView.viewName);
+        viewManagerModel.setActiveView(loginView.viewName);
         viewManagerModel.firePropertyChanged();
 
         application.pack();
