@@ -88,7 +88,7 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
                         .replace("]", "")
                         .replace(" ", "");
                 String line = String.format("%s, %s, %s, %s",
-                        user.getName(), user.getPassword(), user.getCreationTime(), "FR:" + favouriteRecipes);
+                        user.getName(), user.getPassword(), user.getCreationTime(), "FR," + favouriteRecipes);
                 writer.write(line);
                 writer.newLine();
             }
@@ -103,9 +103,8 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
     @Override
     public ArrayList<String> loadFavouriteRecipes(String userName) {
         ArrayList<String> recipes = accounts.get(userName).getFavoriteRecipes();
-
         recipes.removeIf(recipe -> recipe.contains("FR"));
-        return accounts.get(userName).getFavoriteRecipes();
+        return recipes;
     }
 
     @Override
@@ -116,7 +115,9 @@ public class FileUserDataAccessObject implements SaveRecipeDataAccessInterface, 
 
     @Override
     public void saveRecipe(String userName, String recipeName) {
-        accounts.get(userName).setFavoriteRecipes(recipeName);
-        this.save();
+        if (!accounts.get(userName).getFavoriteRecipes().contains(recipeName)) {
+            accounts.get(userName).setFavoriteRecipes(recipeName);
+            this.save();
+        }
     }
 }

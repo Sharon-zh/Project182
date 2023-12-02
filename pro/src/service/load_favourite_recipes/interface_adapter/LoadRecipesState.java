@@ -3,7 +3,7 @@ package service.load_favourite_recipes.interface_adapter;
 import java.util.ArrayList;
 
 public class LoadRecipesState {
-    private ArrayList<String> favouriteRecipes = null;
+    private ArrayList<String> favouriteRecipes;
     private String username = "";
 
     private String emptyMessage = null;

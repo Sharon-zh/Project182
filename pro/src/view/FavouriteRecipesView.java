@@ -1,8 +1,8 @@
 package view;
 
 import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeController;
-import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeState;
 import service.check_favourite_recipe.interface_adapter.CheckFavourRecipeViewModel;
+import service.load_favourite_recipes.interface_adapter.LoadRecipesState;
 import service.load_favourite_recipes.interface_adapter.LoadRecipesViewModel;
 import service.login.interface_adapter.LoginViewModel;
 import service.remove_favourite_recipe.interface_adapter.RemoveRecipeController;
@@ -53,6 +53,7 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
         this.removeRecipeViewModel.addPropertyChangeListener(this);
         this.returnToMainViewModel.addPropertyChangeListener(this);
         this.checkFavourRecipeViewModel.addPropertyChangeListener(this);
+        this.loadRecipesViewModel.addPropertyChangeListener(this);
 
 
 
@@ -73,7 +74,6 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(title);
         this.add(buttons);
-        System.out.println(2);
     }
 
 
@@ -84,34 +84,19 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if (evt.getPropertyName().equals("check favourite recipe")) {
-
-            CheckFavourRecipeState state = (CheckFavourRecipeState) evt.getNewValue();
-            if (state.getNoResultError() != null) {
-                JOptionPane.showMessageDialog(this, state.getNoResultError());
-            } else if (state.getRecipe() != null) {
-                buttons.removeAll();
-                ArrayList<String> recipeNames = loadRecipesViewModel.getState().getFavouriteRecipes();
-                for (String recipeName: recipeNames){
-                    JButton recipeButton = new JButton(recipeName);
+        if (evt.getPropertyName().equals("load recipes")) {
+            buttons.removeAll();
+            LoadRecipesState loadRecipesState = (LoadRecipesState) evt.getNewValue();
+            if (loadRecipesState.getFavouriteRecipes() != null) {
+                ArrayList<String> recipes = loadRecipesState.getFavouriteRecipes();
+                for (String buttonName : recipes) {
+                    JButton recipeButton = new JButton(buttonName);
                     buttons.add(recipeButton);
                     recipeButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
                             if (evt.getSource().equals(recipeButton)) {
-                                checkFavourRecipeController.execute(recipeName);
-                            }
-                        }
-                    });
-
-                    JButton removeRecipeButton = new JButton("remove " + recipeName);
-                    buttons.add(removeRecipeButton);
-                    removeRecipeButton.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent evt) {
-                            if (evt.getSource().equals(removeRecipeButton)) {
-                                String userName = loginViewModel.getState().getUsername();
-                                removeRecipeController.execute(userName, recipeName);
+                                checkFavourRecipeController.execute(buttonName);
                             }
                         }
                     });
@@ -127,10 +112,10 @@ public class FavouriteRecipesView extends JPanel implements ActionListener, Prop
                         }
                     }
                 });
-
-                this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-                this.add(buttons);
             }
+            this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            this.add(buttons);
         }
     }
 }
+
