@@ -1,6 +1,7 @@
 package view;
 
 import service.jump_to_signup.interface_adapter.JumpToSignupController;
+import service.jump_to_signup.interface_adapter.JumpToSignupState;
 import service.jump_to_signup.interface_adapter.JumpToSignupViewModel;
 import service.login.interface_adapter.LoginController;
 import service.login.interface_adapter.LoginState;
@@ -136,6 +137,9 @@ public class  LoginView extends JPanel implements ActionListener, PropertyChange
             } else if (state.getPasswordError() != null) {
                 JOptionPane.showMessageDialog(this, state.getPasswordError());
             }
+        } else if (evt.getPropertyName().equals("sign up")) {
+            JumpToSignupState state = (JumpToSignupState) evt.getNewValue();
+
         }
     }
 
