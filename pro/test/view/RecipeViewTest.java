@@ -45,7 +45,6 @@ public class RecipeViewTest {
     public void testSignupButtonPresent() throws IOException {
         Main.main(null);
         JButton button = getButton();
-
         assert(button.getText().equals("Search"));
     }
     public JButton getButton2() {
@@ -79,7 +78,42 @@ public class RecipeViewTest {
         JButton button = getButton();
         button.doClick();
         JButton button2 = getButton2();
-        System.out.println(button2.getText());
         assert(button2.getText().equals("Corba"));
+    }
+    public JButton getButton3() {
+        JFrame app = null;
+        Window[] windows = Window.getWindows();
+        for (Window window : windows) {
+            if (window instanceof JFrame) {
+                app = (JFrame) window;
+            }
+        }
+
+        assertNotNull(app); // found the window?
+
+        Component root = app.getComponent(0);
+
+        Component cp = ((JRootPane) root).getContentPane();
+
+        JPanel jp = (JPanel) cp;
+
+        JPanel jp2 = (JPanel) jp.getComponent(0);
+
+        RecipeView sv = (RecipeView) jp2.getComponent(6);
+
+        //JPanel buttons = (JPanel) sv.getComponent(17);
+
+        return (JButton) sv.getComponent(17);
+    }
+    @org.junit.Test
+    public void testRecipeButtonMatch() throws IOException {
+        Main.main(null);
+        JButton button = getButton();
+        button.doClick();
+        JButton button2 = getButton2();
+        button2.doClick();
+        JButton button3 = getButton3();
+        System.out.println(button3.getText());
+        assert(button3.getText().equals("like"));
     }
 }
