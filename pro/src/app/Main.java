@@ -22,6 +22,8 @@ import service.login.interface_adapter.LoginViewModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 
@@ -35,7 +37,33 @@ public class Main {
         CardLayout cardLayout = new CardLayout();
 
         JPanel views = new JPanel(cardLayout);
+        views.setBorder(BorderFactory.createLineBorder(Color.PINK, 10));
         application.add(views);
+
+        JMenuBar menuBar = new JMenuBar();
+        JMenu settingMenu = new JMenu("Setting");
+
+        JMenuItem changeColor = new JMenuItem("Change Border Color");
+        settingMenu.add(changeColor);
+        changeColor.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                changeBackgroundColor(views);
+            }
+        });
+
+        JMenuItem help = new JMenuItem("Help");
+        settingMenu.add(help);
+        help.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(views, "After log in:\n " +
+                        "Search: Search meal by name.\n " +
+                        "Recommendation: Lookup a selection of 10 random meals.\n " +
+                        "Save button: Add this recipe to Favourite Recipes.");
+            }
+        });
+
+        menuBar.add(settingMenu);
+        application.setJMenuBar(menuBar);
 
         ViewManagerModel viewManagerModel = new ViewManagerModel();
         new ViewManager(views, cardLayout, viewManagerModel);
@@ -108,6 +136,13 @@ public class Main {
 
         application.pack();
         application.setVisible(true);
+    }
+
+    private static void changeBackgroundColor(JPanel views) {
+        Color color = JColorChooser.showDialog(null, "Choose a color", Color.WHITE);
+        if (color != null) {
+            views.setBorder(BorderFactory.createLineBorder(color, 10));
+        }
     }
 }
 
