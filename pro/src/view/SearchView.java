@@ -162,6 +162,7 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
     public void propertyChange(PropertyChangeEvent evt) {
         if (evt.getPropertyName().equals("search")) {
             SearchState searchstate = (SearchState) evt.getNewValue();
+            setFields(searchstate);
             if (searchstate.getNoResultError() != null) {
                 JOptionPane.showMessageDialog(this, searchstate.getNoResultError());
             }
@@ -171,5 +172,8 @@ public class SearchView extends JPanel implements ActionListener, PropertyChange
                 JOptionPane.showMessageDialog(this, loadRecipesState.getEmptyMessage());
             }
         }
+    }
+    private void setFields(SearchState searchstate) {
+        keywordInputField.setText(null);
     }
 }
