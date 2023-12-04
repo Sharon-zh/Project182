@@ -172,7 +172,7 @@ public class RecipeView extends JPanel implements ActionListener, PropertyChange
                         }
                     }
                 });
-                this.add(cancel);
+//                this.add(cancel);
 //                 save favourite list button
                 JButton save = new JButton("save");
                 save.addActionListener(new ActionListener() {
@@ -184,6 +184,7 @@ public class RecipeView extends JPanel implements ActionListener, PropertyChange
                     }
                 });
                 this.add(save);
+                this.add(cancel);
             }
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         } else if (evt.getPropertyName().equals("comment")) {
@@ -291,7 +292,7 @@ public class RecipeView extends JPanel implements ActionListener, PropertyChange
                         }
                     }
                 });
-                this.add(cancel);
+//                this.add(cancel);
 //                 remove favourite list button
                 JButton remove = new JButton("remove");
                 remove.addActionListener(new ActionListener() {
@@ -303,6 +304,7 @@ public class RecipeView extends JPanel implements ActionListener, PropertyChange
                     }
                 });
                 this.add(remove);
+                this.add(cancel);
             }
             this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         }
