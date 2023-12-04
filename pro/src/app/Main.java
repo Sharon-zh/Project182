@@ -58,7 +58,7 @@ public class Main {
                 JOptionPane.showMessageDialog(views, "After log in:\n " +
                         "Search: Search meal by name.\n " +
                         "Recommendation: Lookup a selection of 10 random meals.\n " +
-                        "Save button: Add this recipe to Favourite Recipes.");
+                        "Favourite recipes: Review the saved recipes");
             }
         });
 
